@@ -8,7 +8,6 @@ import { useState } from "react";
 export default function Home() {
   const [showSecond, setShowSecond] = useState(false);
   const [showThird, setShowThird] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
 
   return (
     <div>
@@ -35,65 +34,81 @@ export default function Home() {
             }}
           >
             <Image
-              src="/profilepicture.png" // Ruta de tu imagen en la carpeta 'public/images'
+              src="/profilepicture.png"
               alt="Mi Foto"
-              layout="fill" // La imagen ocupa todo el contenedor
-              objectFit="cover" // Recorta y ajusta la imagen dentro del círculo
-              priority // Optimización: carga la imagen de manera prioritaria
+              layout="fill"
+              objectFit="cover"
+              priority
             />
           </div>
 
-          {/* Texto Sobre Mí */}
+          {/* Nombre y textos generados por TypeIt */}
           <h2 className="mt-3">Juan Ignacio Di Grazia</h2>
 
-          <TypeIt
-            className="mt-3"
-            as={"p"}
-            options={{
-              cursor: false,
-              afterComplete: () => setShowSecond(true),
+          {/* Contenedor con altura fija para evitar movimientos */}
+          <div
+            className="typeit-container mb-4"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "150px", // Altura fija para evitar movimientos
+              overflow: "hidden",
             }}
           >
-            Frontend & Backend Developer
-          </TypeIt>
-
-          {showSecond && (
             <TypeIt
-              className="mt-3"
+              className="mt-2"
               as={"p"}
               options={{
                 cursor: false,
-                afterComplete: () => setShowThird(true),
+                afterComplete: () => setShowSecond(true),
               }}
             >
-              Software & Hardware Technician
+              Frontend & Backend Developer
             </TypeIt>
-          )}
 
-          {showThird && (
-            <TypeIt
-              className="mt-3"
-              as={"p"}
-              options={{
-                cursor: false,
-                afterComplete: () => setShowInfo(true),
-              }}
-            >
-              AI Specialist & Consultant
-            </TypeIt>
-          )}
+            {showSecond && (
+              <TypeIt
+                className="mt-2"
+                as={"p"}
+                options={{
+                  cursor: false,
+                  afterComplete: () => setShowThird(true),
+                }}
+              >
+                Software & Hardware Technician
+              </TypeIt>
+            )}
 
-          {showInfo && (
-            <TypeIt
-              className="pt-5"
-              as={"h3"}
-              options={{
-                cursor: false,
-              }}
+            {showThird && (
+              <TypeIt
+                className="mt-2"
+                as={"p"}
+                options={{
+                  cursor: false,
+                }}
+              >
+                AI Specialist & Consultant
+              </TypeIt>
+            )}
+          </div>
+
+          {/* Botón de descarga del CV */}
+          <div
+            className="static-download"
+            style={{
+              marginTop: "7px",
+            }}
+          >
+            <a
+              href="/DiGraziaCV.pdf"
+              download="/DiGraziaCV.pdf"
+              className="btn btn-info"
             >
-              Información Personal:
-            </TypeIt>
-          )}
+              Descargar CV
+            </a>
+          </div>
         </div>
       </Fade>
 
