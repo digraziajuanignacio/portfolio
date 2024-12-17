@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 import TypeIt from "typeit-react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [showSecond, setShowSecond] = useState(false);
@@ -106,8 +107,11 @@ export default function Home() {
               download="/DiGraziaCV.pdf"
               className="btn btn-info"
             >
-              Descargar CV
+            Descargar CV
             </a>
+            <Link href="/about">
+            <button type="button" className="btn btn-secondary ms-3">Sobre mí</button>
+            </Link>
           </div>
         </div>
       </Fade>
