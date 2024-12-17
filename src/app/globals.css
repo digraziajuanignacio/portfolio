@@ -28,4 +28,8 @@ a {
   text-decoration: none;
 }
 
+footer {
+  background-color: #343a40; /* Ajusta el color de fondo del footer */
+  color: white;
+}
 

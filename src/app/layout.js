@@ -3,6 +3,7 @@ import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BootstrapClient from "./Components/BootstrapClient";
 import NavBar from "./Components/NavBar";
+import Footer from './Components/Footer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,10 +24,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NavBar />
-        {children}
+        <div className="d-flex flex-column min-vh-100">
+          {/* Navbar */}
+          <NavBar />
+          
+          {/* Contenido principal */}
+          <main className="flex-grow-1">
+            {children}
+          </main>
+          
+          {/* Footer fijo */}
+          <Footer />
+        </div>
+        
+        <BootstrapClient />
       </body>
-      <BootstrapClient />
     </html>
   );
 }
