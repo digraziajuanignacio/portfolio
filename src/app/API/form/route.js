@@ -17,7 +17,7 @@ export async function POST(req) {
     });
 
     return NextResponse.json({
-      msg: ["Inscripción enviada correctamente."],
+      msg: ["Tu información fue enviada correctamente."],
       success: true,
     });
   } catch (error) {
@@ -30,7 +30,7 @@ export async function POST(req) {
       return NextResponse.json({ msg: errorList });
     } else {
       return NextResponse.json({
-        msg: ["La inscripción no se ha podido enviar correctamente."],
+        msg: ["La información no se ha podido enviar correctamente."],
       });
       
     }
