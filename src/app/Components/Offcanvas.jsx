@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from 'react';
 
 export default function OffcanvasCentered() {
@@ -88,13 +88,13 @@ export default function OffcanvasCentered() {
                     borderRadius: '8px',
                     display: isVisible ? 'block' : 'none',
                     padding: '1rem',
-                    height: '90vh', // Ajustado para pantallas grandes
-                    overflow: 'hidden', // Eliminar overflow en el contenedor
+                    height: '86vh', // Aseguramos que el offcanvas ocupe toda la altura de la pantalla
+                    overflow: 'hidden', // Evitamos el scroll dentro del offcanvas
                 }}
             >
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title text-center" id="offcanvasCenteredLabel">
-                        Area de contacto
+                        Área de contacto
                     </h5>
                     <button
                         type="button"
@@ -103,7 +103,7 @@ export default function OffcanvasCentered() {
                         onClick={toggleOffcanvas}
                     ></button>
                 </div>
-                <div className="offcanvas-body d-flex flex-column justify-content-center align-items-center" style={{ flex: '1', overflowY: 'auto' }}>
+                <div className="offcanvas-body d-flex flex-column" style={{ flex: '1', paddingBottom: '60px' }}>
                     {/* Formulario */}
                     <form style={{ width: '100%' }} onSubmit={handleSubmit}>
                         <div className="mb-3">
@@ -142,16 +142,19 @@ export default function OffcanvasCentered() {
                                 className="form-control"
                                 id="origin"
                                 placeholder="Escribe de dónde provienes"
-                                rows="6"
+                                rows="4"
                                 onChange={(e) => setAboutMe(e.target.value)}
                                 value={aboutMe}
                             ></textarea>
                         </div>
+
+                        {/* Botón de Enviar */}
+                        <button type="submit" className="btn btn-success w-100" style={{ marginTop: '1rem' }}>
+                            Enviar
+                        </button>
                     </form>
-                    <button type="submit" className="btn btn-success w-100" style={{ marginTop: '1rem', position: 'sticky', bottom: '1rem' }}>
-                        Enviar
-                    </button>
-                    <div className="bg-slate-100 flex flex-col">
+
+                    <div className="bg-slate-100 flex flex-col mt-3">
                         {error &&
                             error.map((e, i) => (
                                 <div key={i} className="alert alert-success" role="alert">
@@ -166,7 +169,7 @@ export default function OffcanvasCentered() {
             <style jsx>{`
                 @media (max-width: 767px) {
                     .offcanvas {
-                        height: 70vh !important; /* Ajustado para dispositivos móviles */
+                        height: 77vh !important; /* Aseguramos que el offcanvas ocupe toda la pantalla */
                         padding: 0.5rem;
                         max-width: 90%; /* Mejor ajuste para pantallas pequeñas */
                     }
@@ -174,6 +177,7 @@ export default function OffcanvasCentered() {
                         padding: 1rem;
                         display: flex;
                         flex-direction: column;
+                        padding-bottom: 60px;
                     }
                     .form-control {
                         margin-bottom: 1rem;
