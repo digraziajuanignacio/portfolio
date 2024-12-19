@@ -6,7 +6,9 @@ export default function OffcanvasCentered() {
     const [email, setEmail] = useState("");
     const [aboutMe, setAboutMe] = useState("");
     const [isVisible, setIsVisible] = useState(false);
-    const [isClient, setIsClient] = useState(false); // Para controlar el renderizado en cliente
+    const [isClient, setIsClient] = useState(false);
+    const [error, setError] = useState([]);
+    const [success, setSuccess] = useState(false); // Para controlar el renderizado en cliente
 
   useEffect(() => {
     // Este useEffect se asegura de que el código solo se ejecute en el cliente
@@ -28,7 +30,7 @@ export default function OffcanvasCentered() {
     console.log("Email: ", email);
     console.log("Donde Proviene: ", aboutMe);
 
-    const res = await fetch(`${apiUrl}/api/form`, {
+    const res = await fetch(`${apiUrl}/API/form`, {
       method: "POST",
       headers: {
         'Content-Type': "application/json",
