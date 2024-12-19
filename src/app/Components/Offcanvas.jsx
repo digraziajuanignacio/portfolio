@@ -1,8 +1,12 @@
+"use client"
 import { useState, useEffect } from 'react';
 
 export default function OffcanvasCentered() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClient, setIsClient] = useState(false); // Para controlar el renderizado en cliente
+    const [fullname, setFullname] = useState("");
+    const [email, setEmail] = useState("");
+    const [aboutMe, setAboutMe] = useState("");
+    const [isVisible, setIsVisible] = useState(false);
+    const [isClient, setIsClient] = useState(false); // Para controlar el renderizado en cliente
 
   useEffect(() => {
     // Este useEffect se asegura de que el código solo se ejecute en el cliente
@@ -15,6 +19,37 @@ export default function OffcanvasCentered() {
 
   // Verificar si es cliente para evitar problemas de hydration
   if (!isClient) return null; // No renderizar nada hasta que el componente se monte en el cliente
+
+  const handleSubmit = async (e) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    e.preventDefault();
+
+    console.log("Full name: ", fullname);
+    console.log("Email: ", email);
+    console.log("Donde Proviene: ", aboutMe);
+
+    const res = await fetch(`${apiUrl}/api/form`, {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/json",
+      },
+      body: JSON.stringify({
+        fullname,
+        email,
+        aboutMe,
+      }),
+    });
+
+    const { msg, success } = await res.json();
+    setError(msg);
+    setSuccess(success);
+
+    if (success) {
+      setFullname("");
+      setEmail("");
+      setAboutMe("");
+    }
+  };
 
   return (
     <div>
@@ -68,7 +103,7 @@ export default function OffcanvasCentered() {
         </div>
         <div className="offcanvas-body d-flex flex-column justify-content-center align-items-center">
           {/* Formulario */}
-          <form style={{ width: '100%', maxHeight: '70vh', overflowY: 'auto' }}>
+          <form style={{ width: '100%', maxHeight: '70vh', overflowY: 'auto' }} onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
                 Nombre
@@ -78,6 +113,9 @@ export default function OffcanvasCentered() {
                 className="form-control"
                 id="name"
                 placeholder="Ingresa tu nombre"
+                onChange={(e) => setFullname(e.target.value)}
+                value={fullname}
+                maxLength="100"
               />
             </div>
             <div className="mb-3">
@@ -89,6 +127,9 @@ export default function OffcanvasCentered() {
                 className="form-control"
                 id="email"
                 placeholder="correo@example.com"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                maxLength="254"
               />
             </div>
             <div className="mb-3">
@@ -100,12 +141,22 @@ export default function OffcanvasCentered() {
                 id="origin"
                 placeholder="Escribe de dónde provienes"
                 rows="6"
+                onChange={(e) => setAboutMe(e.target.value)}
+                value={aboutMe}
               ></textarea>
             </div>
             <button type="submit" className="btn btn-success w-100" style={{ marginTop: '1rem' }}>
               Enviar
             </button>
           </form>
+          <div className="bg-slate-100 flex flex-col">
+        {error &&
+          error.map((e, i) => (
+            <div key={i} class="alert alert-success" role="alert">
+                {e}
+            </div>
+          ))}
+      </div>
         </div>
       </div>
 
