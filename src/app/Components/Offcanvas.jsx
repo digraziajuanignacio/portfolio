@@ -57,7 +57,7 @@ export default function OffcanvasCentered() {
         <div>
             {/* Botón para abrir el Offcanvas */}
             <button className="btn btn-success" type="button" onClick={toggleOffcanvas}>
-                Contactame
+                Contact Me
             </button>
 
             {/* Fondo oscuro (backdrop) */}
