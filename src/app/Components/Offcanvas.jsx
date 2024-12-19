@@ -10,174 +10,176 @@ export default function OffcanvasCentered() {
     const [error, setError] = useState([]);
     const [success, setSuccess] = useState(false); // Para controlar el renderizado en cliente
 
-  useEffect(() => {
-    // Este useEffect se asegura de que el código solo se ejecute en el cliente
-    setIsClient(true);
-  }, []);
+    useEffect(() => {
+        // Este useEffect se asegura de que el código solo se ejecute en el cliente
+        setIsClient(true);
+    }, []);
 
-  const toggleOffcanvas = () => {
-    setIsVisible((prev) => !prev);
-  };
+    const toggleOffcanvas = () => {
+        setIsVisible((prev) => !prev);
+    };
 
-  // Verificar si es cliente para evitar problemas de hydration
-  if (!isClient) return null; // No renderizar nada hasta que el componente se monte en el cliente
+    // Verificar si es cliente para evitar problemas de hydration
+    if (!isClient) return null; // No renderizar nada hasta que el componente se monte en el cliente
 
-  const handleSubmit = async (e) => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        e.preventDefault();
 
-    console.log("Full name: ", fullname);
-    console.log("Email: ", email);
-    console.log("Donde Proviene: ", aboutMe);
+        console.log("Full name: ", fullname);
+        console.log("Email: ", email);
+        console.log("Donde Proviene: ", aboutMe);
 
-    const res = await fetch(`${apiUrl}/API/form`, {
-      method: "POST",
-      headers: {
-        'Content-Type': "application/json",
-      },
-      body: JSON.stringify({
-        fullname,
-        email,
-        aboutMe,
-      }),
-    });
+        const res = await fetch(`${apiUrl}/API/form`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json",
+            },
+            body: JSON.stringify({
+                fullname,
+                email,
+                aboutMe,
+            }),
+        });
 
-    const { msg, success } = await res.json();
-    setError(msg);
-    setSuccess(success);
+        const { msg, success } = await res.json();
+        setError(msg);
+        setSuccess(success);
 
-    if (success) {
-      setFullname("");
-      setEmail("");
-      setAboutMe("");
-    }
-  };
-
-  return (
-    <div>
-      {/* Botón para abrir el Offcanvas */}
-      <button className="btn btn-success" type="button" onClick={toggleOffcanvas}>
-        Contactame
-      </button>
-
-      {/* Fondo oscuro (backdrop) */}
-      {isVisible && (
-        <div
-          className="offcanvas-backdrop fade show"
-          onClick={toggleOffcanvas}
-          style={{ zIndex: 1045 }}
-        ></div>
-      )}
-
-      {/* Offcanvas personalizado */}
-      <div
-        className={`offcanvas ${isVisible ? 'show' : ''}`}
-        id="offcanvasCentered"
-        aria-labelledby="offcanvasCenteredLabel"
-        tabIndex={-1}
-        style={{
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '100%',
-          maxWidth: '700px',
-          backgroundColor: 'white',
-          boxShadow: '0 0 10px rgba(0, 0, 0, 0.25)',
-          zIndex: 1055,
-          borderRadius: '8px',
-          display: isVisible ? 'block' : 'none',
-          padding: '1rem',
-          height: '90vh', // Ajustado para pantallas grandes
-          overflow: 'hidden', // Eliminar overflow en el contenedor
-        }}
-      >
-        <div className="offcanvas-header">
-          <h5 className="offcanvas-title text-center" id="offcanvasCenteredLabel">
-            Area de contacto
-          </h5>
-          <button
-            type="button"
-            className="btn-close"
-            aria-label="Close"
-            onClick={toggleOffcanvas}
-          ></button>
-        </div>
-        <div className="offcanvas-body d-flex flex-column justify-content-center align-items-center">
-          {/* Formulario */}
-          <form style={{ width: '100%', maxHeight: '70vh', overflowY: 'auto' }} onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">
-                Nombre
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                placeholder="Ingresa tu nombre"
-                onChange={(e) => setFullname(e.target.value)}
-                value={fullname}
-                maxLength="100"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Correo Electrónico
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder="correo@example.com"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                maxLength="254"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="origin" className="form-label">
-                ¿De dónde provienes?
-              </label>
-              <textarea
-                className="form-control"
-                id="origin"
-                placeholder="Escribe de dónde provienes"
-                rows="6"
-                onChange={(e) => setAboutMe(e.target.value)}
-                value={aboutMe}
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-success w-100" style={{ marginTop: '1rem' }}>
-              Enviar
-            </button>
-          </form>
-          <div className="bg-slate-100 flex flex-col">
-        {error &&
-          error.map((e, i) => (
-            <div key={i} class="alert alert-success" role="alert">
-                {e}
-            </div>
-          ))}
-      </div>
-        </div>
-      </div>
-
-      {/* Estilos para corregir márgenes en dispositivos móviles */}
-      <style jsx>{`
-        @media (max-width: 767px) {
-          .offcanvas {
-            height: 67vh !important; /* Reducido para dispositivos móviles */
-            padding: 0.5rem;
-            max-width: 90%; /* Mejor ajuste para pantallas pequeñas */
-          }
-          .offcanvas-body {
-            padding: 1rem;
-          }
-          .form-control {
-            margin-bottom: 1rem;
-          }
+        if (success) {
+            setFullname("");
+            setEmail("");
+            setAboutMe("");
         }
-      `}</style>
-    </div>
-  );
+    };
+
+    return (
+        <div>
+            {/* Botón para abrir el Offcanvas */}
+            <button className="btn btn-success" type="button" onClick={toggleOffcanvas}>
+                Contactame
+            </button>
+
+            {/* Fondo oscuro (backdrop) */}
+            {isVisible && (
+                <div
+                    className="offcanvas-backdrop fade show"
+                    onClick={toggleOffcanvas}
+                    style={{ zIndex: 1045 }}
+                ></div>
+            )}
+
+            {/* Offcanvas personalizado */}
+            <div
+                className={`offcanvas ${isVisible ? 'show' : ''}`}
+                id="offcanvasCentered"
+                aria-labelledby="offcanvasCenteredLabel"
+                tabIndex={-1}
+                style={{
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '100%',
+                    maxWidth: '700px',
+                    backgroundColor: 'white',
+                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.25)',
+                    zIndex: 1055,
+                    borderRadius: '8px',
+                    display: isVisible ? 'block' : 'none',
+                    padding: '1rem',
+                    height: '90vh', // Ajustado para pantallas grandes
+                    overflow: 'hidden', // Eliminar overflow en el contenedor
+                }}
+            >
+                <div className="offcanvas-header">
+                    <h5 className="offcanvas-title text-center" id="offcanvasCenteredLabel">
+                        Area de contacto
+                    </h5>
+                    <button
+                        type="button"
+                        className="btn-close"
+                        aria-label="Close"
+                        onClick={toggleOffcanvas}
+                    ></button>
+                </div>
+                <div className="offcanvas-body d-flex flex-column justify-content-center align-items-center" style={{ flex: '1', overflowY: 'auto' }}>
+                    {/* Formulario */}
+                    <form style={{ width: '100%' }} onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="name" className="form-label">
+                                Nombre
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="name"
+                                placeholder="Ingresa tu nombre"
+                                onChange={(e) => setFullname(e.target.value)}
+                                value={fullname}
+                                maxLength="100"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">
+                                Correo Electrónico
+                            </label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                placeholder="correo@example.com"
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                                maxLength="254"
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="origin" className="form-label">
+                                ¿De dónde provienes?
+                            </label>
+                            <textarea
+                                className="form-control"
+                                id="origin"
+                                placeholder="Escribe de dónde provienes"
+                                rows="6"
+                                onChange={(e) => setAboutMe(e.target.value)}
+                                value={aboutMe}
+                            ></textarea>
+                        </div>
+                    </form>
+                    <button type="submit" className="btn btn-success w-100" style={{ marginTop: '1rem', position: 'sticky', bottom: '1rem' }}>
+                        Enviar
+                    </button>
+                    <div className="bg-slate-100 flex flex-col">
+                        {error &&
+                            error.map((e, i) => (
+                                <div key={i} className="alert alert-success" role="alert">
+                                    {e}
+                                </div>
+                            ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Estilos para corregir márgenes en dispositivos móviles */}
+            <style jsx>{`
+                @media (max-width: 767px) {
+                    .offcanvas {
+                        height: 70vh !important; /* Ajustado para dispositivos móviles */
+                        padding: 0.5rem;
+                        max-width: 90%; /* Mejor ajuste para pantallas pequeñas */
+                    }
+                    .offcanvas-body {
+                        padding: 1rem;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .form-control {
+                        margin-bottom: 1rem;
+                    }
+                }
+            `}</style>
+        </div>
+    );
 }

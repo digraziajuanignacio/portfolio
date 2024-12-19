@@ -88,7 +88,7 @@ function NavBar() {
                                     </a>
                                 </li>
                                 <li className="nav-item mx-5">
-                                    <a className="nav-link" href="/mis-proyectos">My Works</a>
+                                    <a className="nav-link disabled" href="/mis-proyectos" aria-disabled="true">My Works</a>
                                 </li>
                             </ul>
                         </div>
