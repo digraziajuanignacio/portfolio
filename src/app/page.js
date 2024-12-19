@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 import TypeIt from "typeit-react";
 import { useState } from "react";
-import Link from "next/link";
+import OffcanvasForm from "./Components/Offcanvas";
 
 export default function Home() {
   const [showSecond, setShowSecond] = useState(false);
@@ -95,29 +95,29 @@ export default function Home() {
             )}
           </div>
 
-          {/* Botón de descarga del CV */}
+          {/* Botones de descarga y formulario */}
           <div
-            className="static-download"
+            className="static-download d-flex align-items-center"
             style={{
               marginTop: "7px",
+              gap: "10px", // Espaciado entre los botones
             }}
           >
+            {/* Botón de descarga del CV */}
             <a
               href="/DiGraziaCV.pdf"
               download="/DiGraziaCV.pdf"
               className="btn btn-info"
             >
-            Descargar CV
+              Descargar CV
             </a>
-            <Link href="/about">
-            <button type="button" className="btn btn-secondary ms-3">Sobre mí</button>
-            </Link>
+
+
+            {/* Componente del formulario Offcanvas */}
+            <OffcanvasForm />
           </div>
         </div>
       </Fade>
-
-      {/* Espacio extra para crear el efecto de scroll */}
-
     </div>
   );
 }
