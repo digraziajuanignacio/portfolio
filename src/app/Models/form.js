@@ -15,7 +15,7 @@ const contactSchema = new Schema({
     match: [/^[\w.%+-]+@[\w.-]+\.[A-Za-z]{2,}$/i, "El Mail es Invalido."],
   },
 
-  aboutme: {
+  aboutMe: {
     type: String,
     required: [true, "Se requiere información sobre tí."],
   },
