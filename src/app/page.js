@@ -7,6 +7,7 @@ import { useState } from "react";
 import OffcanvasForm from "./Components/Offcanvas";
 
 export default function Home() {
+  
   const [showSecond, setShowSecond] = useState(false);
   const [showThird, setShowThird] = useState(false);
 
@@ -29,9 +30,9 @@ export default function Home() {
               height: "auto",
               aspectRatio: "1/1",
               borderRadius: "50%",
-              border: "2px solid black",
               position: "relative",
               overflow: "hidden",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
             }}
           >
             <Image

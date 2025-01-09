@@ -1,19 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./CSS/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BootstrapClient from "./Components/BootstrapClient";
 import NavBar from "./Components/NavBar";
 import Footer from './Components/Footer';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const raleway = Raleway({ subsets: ['latin'] })
 
 export const metadata = {
   title: "DTech PortFolio",
@@ -23,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={raleway.className}>
         <div className="d-flex flex-column min-vh-100">
           {/* Navbar */}
           <NavBar />
