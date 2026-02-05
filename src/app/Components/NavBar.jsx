@@ -98,10 +98,9 @@ function NavBar() {
                                 </li>
                                 
                                 <li className="nav-item tooltip-container">
-                                    <Link className="nav-link custom-link disabled" href="/mis-proyectos" aria-disabled="true">
+                                    <Link className="nav-link custom-link" href="/mis-proyectos">
                                         My Works
                                     </Link>
-                                    <span className="tooltip-text">En Desarrollo 🛠️</span>
                                 </li>
                             </ul>
                         </div>
@@ -194,15 +193,7 @@ function NavBar() {
                     border-width: 5px;
                     border-style: solid;
                     border-color: transparent transparent #333 transparent; /* Triángulo apuntando arriba */
-                }
-
-                /* Acción Hover */
-                .tooltip-container:hover .tooltip-text {
-                    visibility: visible;
-                    opacity: 1;
-                    margin-top: 5px; 
-                }
-
+            }
                 /* --- Estilos Modal --- */
                 .custom-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 1rem; backdrop-filter: blur(2px); }
                 .custom-modal-content { background: white; width: 100%; max-width: 550px; border-radius: 12px; box-shadow: 0 15px 50px rgba(0,0,0,0.3); display: flex; flex-direction: column; height: auto; max-height: 95vh; overflow-y: auto; animation: fadeIn 0.3s ease-out; }
