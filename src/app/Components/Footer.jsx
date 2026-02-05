@@ -26,10 +26,10 @@ const Footer = () => {
               <a href="https://github.com/digraziajuanignacio" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FaGithub />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <a href="https://www.linkedin.com/in/digraziajuanignacio/" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FaLinkedin />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <a href="https://www.instagram.com/digrazia.tech/" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FaInstagram />
               </a>
               <a href="mailto:digraziatech@gmail.com" className="social-icon">
@@ -42,15 +42,13 @@ const Footer = () => {
 
       <style jsx>{`
         .footer-section {
-          background-color: #ffffff; /* Fondo blanco limpio */
+          background-color: #ffffff; 
           position: relative;
           width: 100%;
-          /* Eliminamos margin-top para borrar la franja blanca */
           margin-top: 0; 
-          padding-top: 2rem; /* Usamos padding interno en su lugar */
+          padding-top: 2rem;
         }
 
-        /* Línea de gradiente sutil arriba para separar del contenido */
         .footer-gradient-line {
           width: 100%;
           height: 3px;
@@ -85,12 +83,10 @@ const Footer = () => {
           transform: translateY(-3px); /* Efecto de flotar */
         }
 
-        /* Colores específicos al pasar el mouse */
         .social-icon:hover :global(svg) {
           filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
         
-        /* Ejemplo de color al hover (opcional, ajusta si quieres colores específicos) */
         .social-icon:nth-child(1):hover { color: #333; } /* Github */
         .social-icon:nth-child(2):hover { color: #0077b5; } /* Linkedin */
         .social-icon:nth-child(3):hover { color: #e1306c; } /* Instagram */
