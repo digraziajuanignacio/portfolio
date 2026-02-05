@@ -1,7 +1,7 @@
 export default function MisProyectos() {
     return (
       <>
-      <h1>HOLA</h1>
+      <h1></h1>
       </>
     );
   }
