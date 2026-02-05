@@ -31,6 +31,7 @@ export default function Home() {
     if (!/^[a-zA-Z\s]+$/.test(fullname.trim())) errors.push("El nombre solo puede tener letras.");
     if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email.trim())) errors.push("Email inválido.");
     if (aboutMe.trim().length < 10) errors.push("Mensaje muy corto.");
+    if (aboutMe.trim().length > 500) errors.push("El mensaje excede los 500 caracteres.");
     return errors;
   };
 
@@ -155,6 +156,7 @@ export default function Home() {
                         <div className="input-group">
                             <label>Mensaje</label>
                             <textarea placeholder="Hola Juan..." rows="3" onChange={(e) => setAboutMe(e.target.value)} value={aboutMe}></textarea>
+                            <span className="char-count">{aboutMe.length}/500</span>
                         </div>
                         {error.length > 0 && <div className="alert-box error"><ul>{error.map((e,i)=><li key={i}>{e}</li>)}</ul></div>}
                         {success && <div className="alert-box success">¡Enviado!</div>}
@@ -237,6 +239,7 @@ export default function Home() {
         .modal-title { font-weight: bold; margin: 0; }
         .btn-close-custom { position: absolute; right: 1rem; border: none; background: none; font-size: 1.2rem; color: #999; cursor: pointer; }
         .modal-body { padding: 1.5rem; }
+        .char-count { text-align: right; font-size: 0.75rem; color: #aaa; }
         .input-group { margin-bottom: 1rem; text-align: left; }
         .input-group label { display: block; font-size: 0.85rem; font-weight: bold; color: #555; margin-bottom: 0.3rem; }
         .input-group input, .input-group textarea { width: 100%; padding: 0.6rem; border: 1px solid #ddd; border-radius: 8px; }
@@ -244,6 +247,7 @@ export default function Home() {
         .alert-box { padding: 0.5rem; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.9rem; }
         .alert-box.error { background: #f8d7da; color: #842029; }
         .alert-box.success { background: #d1e7dd; color: #0f5132; text-align: center; }
+        
       `}</style>
     </div>
   );

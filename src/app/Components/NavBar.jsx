@@ -41,6 +41,7 @@ function NavBar() {
         if (!/^[a-zA-Z\s]+$/.test(fullname.trim())) errors.push("El nombre solo puede tener letras.");
         if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email.trim())) errors.push("Email inválido.");
         if (aboutMe.trim().length < 10) errors.push("Mensaje muy corto.");
+        if (aboutMe.trim().length > 500) errors.push("El mensaje excede los 500 caracteres.");
         return errors;
     };
 
@@ -199,7 +200,7 @@ function NavBar() {
                 .tooltip-container:hover .tooltip-text {
                     visibility: visible;
                     opacity: 1;
-                    margin-top: 5px; /* Pequeña animación de subida */
+                    margin-top: 5px; 
                 }
 
                 /* --- Estilos Modal --- */
@@ -213,7 +214,7 @@ function NavBar() {
                 .input-group { margin-bottom: 1rem; display: flex; flex-direction: column; }
                 .input-group label { font-size: 0.85rem; font-weight: 600; color: #666; margin-bottom: 0.3rem; }
                 .input-group input, .input-group textarea { padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; width: 100%; }
-                .char-count { text-align: right; font-size: 0.75rem; color: #aaa; }
+                .char-count { text-align: left; font-size: 0.75rem; color: #aaa; }
                 .btn-submit { width: 100%; padding: 0.8rem; background-color: #198754; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 0.5rem; }
                 .alert-box { padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; }
                 .alert-box.error { background-color: #f8d7da; color: #842029; }

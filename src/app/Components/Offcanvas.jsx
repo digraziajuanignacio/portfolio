@@ -37,6 +37,7 @@ export default function OffcanvasCentered() {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         if (!emailRegex.test(trimEmail)) errors.push("Email inválido.");
         if (trimMessage.length < 10) errors.push("Mensaje muy corto (mínimo 10 caracteres).");
+        if (trimMessage.length > 500) errors.push("El mensaje excede los 500 caracteres");
 
         return errors;
     };
