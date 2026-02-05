@@ -29,7 +29,7 @@ export async function POST(req) {
     try {
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
-        to: 'tucorreopersonal@gmail.com', 
+        to: 'nachitodalo@gmail.com', 
         subject: `Nuevo Lead en Portfolio: ${fullname}`,
         html: `
           <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
