@@ -32,11 +32,7 @@ export default function About() {
                 <div className="contact-list">
                   <div className="contact-item">
                     <span className="icon-box bg-light text-primary"><BiMapAlt /></span>
-                    <span className="text-dark">Floresta, Buenos Aires CABA</span>
-                  </div>
-                  <div className="contact-item">
-                    <span className="icon-box bg-light text-success"><FaPhoneVolume /></span>
-                    <span className="text-dark">+54 9 11 2770-3621</span>
+                    <span className="text-dark">Buenos Aires, CABA</span>
                   </div>
                   <div className="contact-item">
                     <span className="icon-box bg-light text-danger"><IoMailUnreadOutline /></span>
