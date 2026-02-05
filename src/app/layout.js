@@ -8,10 +8,13 @@ import Footer from './Components/Footer';
 const raleway = Raleway({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "DTech PortFolio",
-  description: "Mi Portafolio virtual",
+  title: "Juan Ignacio | Portfolio", 
+  description: "Portafolio profesional y servicios de IT",
+  icons: {
+    icon: '/favicon.ico', 
+  },
+  // -------------------
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
