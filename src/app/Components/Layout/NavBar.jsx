@@ -4,8 +4,8 @@ import { ImLinkedin } from "react-icons/im";
 import { FiInstagram } from "react-icons/fi";
 import { IoLogoGithub } from "react-icons/io";
 import Link from 'next/link';
-import ContactForm from './ContactForm';
-import Modal from './Modal';
+import ContactForm from '../Forms/ContactForm';
+import Modal from '../UI/Modal';
 
 function NavBar() {
     const [isVisible, setIsVisible] = useState(false);
@@ -55,6 +55,9 @@ function NavBar() {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link nav-link-modern" href="/mis-proyectos">My Works</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link nav-link-modern" href="/ta-te-ti">Play ta-te-ti</Link>
                             </li>
                         </ul>
                         

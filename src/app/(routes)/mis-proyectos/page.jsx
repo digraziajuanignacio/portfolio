@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { FaGithub, FaExternalLinkAlt, FaCode, FaTools } from "react-icons/fa";
-import ProjectCard from "../../Components/ProjectCard"; 
+import ProjectCard from "../../Components/UI/ProjectCard"; 
 
 export default function MyWorks() {
   const [filter, setFilter] = useState("all");

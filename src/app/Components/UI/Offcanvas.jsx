@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
-import ContactForm from './ContactForm';
-import Modal from './Modal';
+import ContactForm from '../Forms/ContactForm';
+import Modal from '../UI/Modal';
 
 export default function OffcanvasCentered() {
     const [isVisible, setIsVisible] = useState(false);

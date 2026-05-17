@@ -1,11 +1,7 @@
-import { Raleway } from "next/font/google";
 import "./CSS/globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import BootstrapClient from "./Components/BootstrapClient";
-import NavBar from "./Components/NavBar";
-import Footer from './Components/Footer';
-
-const raleway = Raleway({ subsets: ['latin'] })
+import NavBar from "./Components/Layout/NavBar";
+import Footer from "./Components/Layout/Footer";
+import BootstrapClient from "./Components/Layout/BootstrapClient";
 
 export const metadata = {
   title: "Juan Ignacio | Portfolio", 
@@ -13,25 +9,15 @@ export const metadata = {
   icons: {
     icon: '/icons/favicon.ico', 
   },
-  // -------------------
 };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={raleway.className}>
-        <div className="d-flex flex-column min-vh-100">
-          {/* Navbar */}
-          <NavBar />
-          
-          {/* Contenido principal */}
-          <main className="flex-grow-1">
-            {children}
-          </main>
-          
-          {/* Footer fijo */}
-          <Footer />
-        </div>
-        
+      <body>
+        <NavBar />
+        <main>{children}</main>
+        <Footer />
         <BootstrapClient />
       </body>
     </html>
