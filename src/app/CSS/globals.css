@@ -1,21 +1,9 @@
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #198754;
+  --secondary-color: #0d6efd;
+  --text-dark: #1a1a1a;
+  --text-muted: #666666;
+  --bg-light: #fcfcfc;
 }
 
 * {
@@ -24,13 +12,60 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-light);
+}
+
+body {
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-geist-sans);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--text-dark);
+}
+
+code, pre, .mono-text {
+  font-family: var(--font-geist-mono), source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-footer {
-  background-color: #343a40; /* Ajusta el color de fondo del footer */
-  color: white;
+/* Tipografía de Vanguardia */
+.display-large {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
 }
 
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Mejoras globales de legibilidad */
+p {
+  font-size: 1.05rem;
+  font-weight: 450; /* Peso óptimo para legibilidad en Geist */
+}
+
+strong {
+  font-weight: 700;
+}
+
+::selection {
+  background-color: rgba(25, 135, 84, 0.2);
+  color: var(--primary-color);
+}

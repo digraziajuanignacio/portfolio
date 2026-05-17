@@ -1,10 +1,21 @@
+import { Geist, Geist_Mono } from "next/font/google";
 import "./CSS/globals.css";
 import NavBar from "./Components/Layout/NavBar";
 import Footer from "./Components/Layout/Footer";
 import BootstrapClient from "./Components/Layout/BootstrapClient";
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata = {
-  metadataBase: new URL('https://juanignacio.tech'), // Reemplazar con tu dominio real
+  metadataBase: new URL('https://juanignacio.tech'),
   title: {
     default: "Juan Ignacio Di Grazia | Full-Stack Developer & IT Specialist",
     template: "%s | Juan Ignacio Di Grazia"
@@ -37,7 +48,7 @@ export const metadata = {
   },
   icons: {
     icon: '/icons/favicon.ico',
-    apple: '/icons/favicon.ico', // Idealmente un png de 180x180
+    apple: '/icons/favicon.ico',
   },
   robots: {
     index: true,
@@ -48,7 +59,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className="antialiased">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavBar />
         <main>{children}</main>
         <Footer />
