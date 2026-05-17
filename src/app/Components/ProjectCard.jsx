@@ -33,9 +33,9 @@ const ProjectCard = ({ project }) => {
                      <Image
                        src={imgData.url}
                        alt={`${project.title} - ${index + 1}`}
-                       layout="fill"
-                       objectFit="cover"
-                       objectPosition={imgData.focus || "center"} 
+                       width={400}
+                       height={250}
+                       style={{ objectFit: 'cover', objectPosition: imgData.focus || "center" }}
                        className="card-img"
                      />
                 </div>
