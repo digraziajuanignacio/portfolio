@@ -11,9 +11,9 @@ export default function TatetiPromo() {
           <div className="promo-card mx-auto">
             <div className="row align-items-center g-4">
               <div className="col-12 col-lg-7 text-center text-lg-start">
-                <h2 className="fw-bold mb-3">¿Te animas a un desafío?</h2>
+                <h2 className="fw-bold mb-3">¿Te animás a un desafío?</h2>
                 <p className="text-muted mb-4">
-                  He desarrollado una <strong>IA estratégica</strong> para jugar al Ta-Te-Ti. Es una demostración divertida de lógica algorítmica y manejo de estados en tiempo real. ¿Crees que puedes ganarme?
+                  Armé una <strong>IA estratégica</strong> para jugar al Ta-Te-Ti. Es una demostración de lógica y manejo de estados en tiempo real. ¿Crees que podés ganarme?
                 </p>
                 <Link href="/ta-te-ti" className="btn-modern btn-accent-gradient d-inline-flex">
                   <FaRobot className="me-2" /> Jugar Ta-Te-Ti AI

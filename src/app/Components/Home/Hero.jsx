@@ -55,7 +55,7 @@ export default function Hero({ toggleModal }) {
             </div>
 
             <p className="lead text-muted mb-5 mx-auto hero-subtitle">
-              Ingeniería en Sistemas (UTN) • Transformando ideas complejas en soluciones digitales y físicas de alto impacto.
+              Estudiante de Ingeniería en Sistemas (UTN) • Laburo para transformar ideas complejas en soluciones digitales y físicas que realmente sirvan.
             </p>
 
             <div className="d-flex justify-content-center gap-3 flex-wrap mb-5">
@@ -63,7 +63,7 @@ export default function Hero({ toggleModal }) {
                 <FaDownload /> Descargar CV
               </a>
               <button onClick={toggleModal} className="btn-modern btn-outline-modern">
-                <FaPaperPlane /> Contact Me
+                <FaPaperPlane /> Contacto
               </button>
             </div>
           </div>

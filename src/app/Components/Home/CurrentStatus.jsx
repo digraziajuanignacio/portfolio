@@ -18,13 +18,13 @@ export default function CurrentStatus() {
                 <h6 className="text-success fw-bold text-uppercase mb-1" style={{ letterSpacing: "1px", fontSize: "0.8rem" }}>Actualidad</h6>
                 <h3 className="fw-bold mb-2">Soporte Técnico @ UTN FRBA</h3>
                 <p className="text-muted mb-0">
-                  Me desempeño actualmente brindando soporte técnico integral a usuarios en la <strong>Universidad Tecnológica Nacional</strong> (Facultad Regional Buenos Aires). Gestiono infraestructura de laboratorios, resuelvo incidencias críticas y aseguro la continuidad tecnológica para alumnos y docentes de la facultad.
+                  Me encuentro trabajando en el mantenimiento de la infraestructura de la facultad y colaborando en proyectos de innovación para la mejora institucional. Mis tareas del día a día incluyen el <strong>cableado de redes</strong>, manejo de <strong>racks y switches</strong>, soporte IT integral y la reparación de <strong>notebooks y PCs</strong>.
                 </p>
               </div>
               <div className="col-12 col-md-auto text-center">
                 <div className="status-badge">
                   <span className="status-dot"></span>
-                  Activo
+                  En actividad
                 </div>
               </div>
             </div>

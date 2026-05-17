@@ -57,7 +57,7 @@ function NavBar() {
                                 <Link className="nav-link nav-link-modern" href="/mis-proyectos">My Works</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link nav-link-modern" href="/ta-te-ti">Play ta-te-ti</Link>
+                                <Link className="nav-link nav-link-modern" href="/ta-te-ti">Ta-Te-Ti</Link>
                             </li>
                         </ul>
                         
@@ -71,7 +71,7 @@ function NavBar() {
                 </div>
             </nav>
 
-            <Modal isVisible={isVisible} onClose={toggleModal} title="Contacto">
+            <Modal isVisible={isVisible} onClose={toggleModal} title="Ponete en contacto">
                 <ContactForm />
             </Modal>
 

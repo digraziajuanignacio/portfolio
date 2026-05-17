@@ -33,7 +33,7 @@ export default function About() {
                     </div>
                     <div className="experience-badge">
                         <span className="number">+5</span>
-                        <span className="text">Años de Pasión IT</span>
+                        <span className="text">Años formandome</span>
                     </div>
                 </div>
               </Fade>
@@ -42,27 +42,27 @@ export default function About() {
             <div className="col-12 col-lg-7">
               <Fade triggerOnce direction="right">
                 <div className="about-content">
-                  <h6 className="text-success fw-bold text-uppercase mb-2">Sobre Mí</h6>
+                  <h6 className="text-success fw-bold text-uppercase mb-2">Un poco sobre mí</h6>
                   <h1 className="display-4 fw-bold mb-4">Juan Ignacio Di Grazia</h1>
                   <p className="lead text-muted mb-4">
-                    Estudiante de <strong>Ingeniería en Sistemas en la UTN</strong>, fusionando la precisión del hardware con la creatividad del desarrollo de software.
+                    Estudiante de <strong>Ingeniería en Sistemas en la UTN</strong>. Mezclo la precisión del hardware con la creatividad de programar.
                   </p>
                   <p className="text-muted mb-5" style={{ lineHeight: "1.8" }}>
-                    Mi trayectoria se define por la resolución práctica de problemas. Desde optimizar el rendimiento térmico de una estación de trabajo hasta construir arquitecturas web escalables, busco la excelencia técnica en cada detalle. Mi objetivo es crear soluciones que no solo funcionen, sino que perduren.
+                    Mi camino se trata de resolver problemas de forma práctica. Ya sea optimizando el calor de una PC o armando una web que se banque miles de usuarios, busco que todo quede impecable. Mi meta es crear soluciones que no solo anden, sino que duren y aporten valor real.
                   </p>
                   
                   <div className="contact-grid">
                     <div className="contact-card">
                       <div className="icon-box"><BiMapAlt /></div>
                       <div>
-                        <span className="label">Ubicación</span>
+                        <span className="label">¿Dónde estoy?</span>
                         <span className="value">Buenos Aires, CABA</span>
                       </div>
                     </div>
                     <div className="contact-card">
                       <div className="icon-box"><IoMailUnreadOutline /></div>
                       <div>
-                        <span className="label">Email</span>
+                        <span className="label">Escribime</span>
                         <span className="value">digraziatech@gmail.com</span>
                       </div>
                     </div>
@@ -77,7 +77,7 @@ export default function About() {
       <section className="about-skills py-5 bg-white">
         <div className="container">
             <div className="text-center mb-5">
-                <h2 className="fw-bold h1">Skills Profesionales</h2>
+                <h2 className="fw-bold h1">Lo que manejo</h2>
                 <div className="title-bar mx-auto"></div>
             </div>
 
@@ -100,40 +100,6 @@ export default function About() {
                         </Fade>
                     </div>
                 ))}
-            </div>
-        </div>
-      </section>
-
-      <section className="about-philosophy py-5">
-        <div className="container">
-            <div className="row g-4 text-center">
-                <div className="col-12 col-md-4">
-                    <Fade bottom triggerOnce>
-                        <div className="philo-card">
-                            <div className="philo-icon"><FaLightbulb /></div>
-                            <h4>Innovación</h4>
-                            <p className="text-muted small">Siempre buscando la tecnología más eficiente para cada proyecto.</p>
-                        </div>
-                    </Fade>
-                </div>
-                <div className="col-12 col-md-4">
-                    <Fade bottom delay={200} triggerOnce>
-                        <div className="philo-card">
-                            <div className="philo-icon"><FaRocket /></div>
-                            <h4>Rendimiento</h4>
-                            <p className="text-muted small">Optimización máxima tanto en líneas de código como en hardware físico.</p>
-                        </div>
-                    </Fade>
-                </div>
-                <div className="col-12 col-md-4">
-                    <Fade bottom delay={400} triggerOnce>
-                        <div className="philo-card">
-                            <div className="philo-icon"><FaTools /></div>
-                            <h4>Mantenimiento</h4>
-                            <p className="text-muted small">Soluciones diseñadas para ser duraderas y fáciles de escalar.</p>
-                        </div>
-                    </Fade>
-                </div>
             </div>
         </div>
       </section>
@@ -161,9 +127,6 @@ export default function About() {
         .progress-bar-fill { height: 100%; border-radius: 10px; }
         .progress-bar-fill.dev { background: linear-gradient(90deg, #0d6efd, #0dcaf0); }
         .progress-bar-fill.tech { background: linear-gradient(90deg, #198754, #20c997); }
-        .philo-card { padding: 40px 20px; }
-        .philo-icon { font-size: 2.5rem; color: #198754; margin-bottom: 20px; opacity: 0.8; }
-        .philo-card h4 { font-weight: 700; margin-bottom: 15px; }
         @media (max-width: 991px) {
             .about-image-wrapper { height: 400px; margin-bottom: 40px; }
             .image-main { width: 100%; }
