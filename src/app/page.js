@@ -20,14 +20,14 @@ export default function Home() {
       title: "Portfolio Premium",
       category: "Desarrollo Full-Stack",
       description: "Desarrollé esta plataforma utilizando Next.js 15 y React 19 para garantizar un rendimiento óptimo. Implementé una arquitectura de componentes reutilizables, optimización de imágenes avanzada y un sistema de contacto seguro con validación anti-spam y notificaciones automáticas vía email.",
-      image: "/trabajos/portafolios_d1.webp",
+      image: "/images/trabajos/portafolios_d1.webp",
       tech: ["Next.js", "MongoDB", "Nodemailer", "Sharp"]
     },
     {
       title: "Soporte Técnico Avanzado",
       category: "Hardware & Optimización",
       description: "Especialista en mantenimiento crítico de estaciones de trabajo. Realizo limpiezas profundas, aplicaciones de pasta térmica de alto rendimiento y diagnósticos de hardware. Mi enfoque se centra en extender la vida útil del equipo y maximizar su eficiencia térmica y operativa.",
-      image: "/trabajos/pastatermica_t1.webp",
+      image: "/images/trabajos/pastatermica_t1.webp",
       tech: ["Troubleshooting", "Thermal Mgmt", "Hardware Upgrade"]
     }
   ];

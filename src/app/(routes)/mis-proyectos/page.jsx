@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { FaGithub, FaExternalLinkAlt, FaCode, FaTools } from "react-icons/fa";
-// Importación corregida con doble punto para salir de (routes)
 import ProjectCard from "../../Components/ProjectCard"; 
 
 export default function MyWorks() {
@@ -15,9 +14,8 @@ export default function MyWorks() {
       category: "dev",
       title: "Portfolio Personal",
       description: "Este sitio web. Desarrollado con Next.js 14, React y Bootstrap. Cuenta con validaciones anti-spam y diseño responsivo.",
-      // AQUI EL EJEMPLO: ARRAY DE OBJETOS
       images: [
-        { url: "/images/trabajos/portafolios_d1.webp", focus: "center" } // Enfoca la cara (arriba)
+        { url: "/images/trabajos/portafolios_d1.webp", focus: "center" }
       ],
       tags: ["Next.js", "React", "Bootstrap", "MongoDB"],
       links: [
@@ -30,11 +28,10 @@ export default function MyWorks() {
       category: "tech",
       title: "Limpieza Hardware",
       description: "Mantenimiento integral: Limpieza profunda de ventiladores, cambio de pasta térmica. Verificación de temperaturas post-mantenimiento.",
-      // EJEMPLO CON MULTIPLES FOTOS Y DIFERENTES FOCOS
       images: [
-        { url: "/images/trabajos/suciedad_t1.webp", focus: "center 70%" },  // Enfoca un poco abajo
+        { url: "/images/trabajos/suciedad_t1.webp", focus: "center 70%" },
         { url: "/images/trabajos/limpio_t1.webp", focus: "center 90%" },
-        { url: "/images/trabajos/pastatermica_t1.webp", focus: "center 65%" }    // Enfoca al centro
+        { url: "/images/trabajos/pastatermica_t1.webp", focus: "center 65%" }
       ],
       tags: ["Hardware", "Mantenimiento", "Upgrade"],
       specs: ["Vida Útil: Extendida", "Pasta: Nueva"]
@@ -45,27 +42,12 @@ export default function MyWorks() {
       title: "Cambio de Contraseña",
       description: "Recuperación de sesión de usuario con contraseña olvidada.",
       images: [
-        { url: "/images/trabajos/contraseña_t2.webp", focus: "center 45%" } // Ejemplo: foco izquierda arriba
+        { url: "/images/trabajos/contrasena_t2.webp", focus: "center 45%" }
       ],
       tags: ["Software", "Contraseñas", "Express"],
       links: [ { label: "Repo Privado", url: "#", icon: <FaGithub /> } ],
       specs: ["Tiempo: 20min", "OS: Win 10 Pro"]
-    },
-
-    // {
-    //   id: 4,
-    //   category: "tech",
-    //   title: "Armado PC Gamer",
-    //   description: "Ensamblaje completo, gestión de cables y configuración de BIOS. Pruebas de estrés realizadas y benchmarks sintéticos.",
-    //   images: [
-    //     { url: "/images/profilepicture.webp", focus: "center" },
-    //     { url: "/images/profilepicture.webp", focus: "center bottom" }, // Enfoca el fondo
-    //     { url: "/images/profilepicture.webp", focus: "right center" }   // Enfoca la derecha
-    //   ],
-    //   tags: ["Build", "Cable Mgmt", "BIOS"],
-    //   specs: ["Ryzen 7", "RTX 3060"]
-    // },
-    
+    }
   ];
 
   const filteredProjects = filter === "all" ? projects : projects.filter(p => p.category === filter);
@@ -73,7 +55,6 @@ export default function MyWorks() {
   return (
     <section className="works-section py-5 min-vh-100 bg-light-gray">
       <div className="container">
-        
         <Fade triggerOnce>
           <div className="text-center mb-5">
             <h1 className="fw-bold display-5 text-dark">Mis Proyectos</h1>
