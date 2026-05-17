@@ -33,8 +33,8 @@ const ProjectCard = ({ project }) => {
                      <Image
                        src={imgData.url}
                        alt={`${project.title} - ${index + 1}`}
-                       width={400}
-                       height={250}
+                       fill
+                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                        style={{ objectFit: 'cover', objectPosition: imgData.focus || "center" }}
                        className="card-img"
                      />

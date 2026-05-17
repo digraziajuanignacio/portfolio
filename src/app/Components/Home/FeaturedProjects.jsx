@@ -37,7 +37,13 @@ export default function FeaturedProjects() {
               <Fade delay={idx * 200} triggerOnce>
                 <div className="featured-card">
                   <div className="card-image-box">
-                    <Image src={project.image} alt={project.title} width={600} height={400} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    <Image 
+                      src={project.image} 
+                      alt={project.title} 
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      style={{ objectFit: 'cover' }} 
+                    />
                     <div className="card-category-tag">{project.category}</div>
                   </div>
                   <div className="card-content-box p-4">

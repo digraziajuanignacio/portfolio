@@ -55,7 +55,7 @@ export default function Hero({ toggleModal }) {
             </div>
 
             <p className="lead text-muted mb-5 mx-auto hero-subtitle">
-              Estudiante de Ingeniería en Sistemas (UTN) • Laburo para transformar ideas complejas en soluciones digitales y físicas que realmente sirvan.
+              Estudiante de Ingeniería en Sistemas (UTN) • Trabajo para transformar ideas complejas en soluciones digitales y físicas que realmente sirvan.
             </p>
 
             <div className="d-flex justify-content-center gap-3 flex-wrap mb-5">
