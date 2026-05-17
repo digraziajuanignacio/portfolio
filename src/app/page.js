@@ -4,249 +4,230 @@ import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 import TypeIt from "typeit-react";
 import { useState } from "react";
-import { FaDownload, FaPaperPlane } from "react-icons/fa";
-import { ImLinkedin } from "react-icons/im"; 
+import { FaDownload, FaPaperPlane, FaUniversity, FaUserCheck, FaMicrochip } from "react-icons/fa";
+import ContactForm from "./Components/ContactForm";
+import Modal from "./Components/Modal";
 
 export default function Home() {
   const [showSecond, setShowSecond] = useState(false);
   const [showThird, setShowThird] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
-  const [empresa, setEmpresa] = useState(""); 
-  const [error, setError] = useState([]);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
 
+  const toggleModal = () => setIsModalVisible(!isModalVisible);
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-    if (isModalVisible) { setError([]); setSuccess(false); }
-  };
-
-  const validateForm = () => {
-    const errors = [];
-    if (fullname.trim().length < 3) errors.push("Nombre muy corto.");
-    if (!/^[a-zA-Z\s]+$/.test(fullname.trim())) errors.push("El nombre solo puede tener letras.");
-    if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email.trim())) errors.push("Email inválido.");
-    if (aboutMe.trim().length < 10) errors.push("Mensaje muy corto.");
-    if (aboutMe.trim().length > 500) errors.push("El mensaje excede los 500 caracteres.");
-    return errors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError([]); setSuccess(false);
-    if (empresa) { setSuccess(true); return; } 
-
-    const clientErrors = validateForm();
-    if (clientErrors.length > 0) { setError(clientErrors); return; }
-
-    setLoading(true);
-    try {
-        const res = await fetch(`/API/form`, {
-            method: "POST",
-            headers: { 'Content-Type': "application/json" },
-            body: JSON.stringify({ fullname, email, aboutMe }),
-        });
-        const data = await res.json();
-        if (data.success) {
-            setSuccess(true); setFullname(""); setEmail(""); setAboutMe(""); setEmpresa("");
-        } else {
-            setError(Array.isArray(data.msg) ? data.msg : [data.msg]);
-        }
-    } catch (err) { setError(["Error de conexión."]); } 
-    finally { setLoading(false); }
-  };
+  const featuredProjects = [
+    {
+      title: "Portfolio Premium",
+      category: "Desarrollo Full-Stack",
+      description: "Desarrollé esta plataforma utilizando Next.js 15 y React 19 para garantizar un rendimiento óptimo. Implementé una arquitectura de componentes reutilizables, optimización de imágenes avanzada y un sistema de contacto seguro con validación anti-spam y notificaciones automáticas vía email.",
+      image: "/trabajos/portafolios_d1.webp",
+      tech: ["Next.js", "MongoDB", "Nodemailer", "Sharp"]
+    },
+    {
+      title: "Soporte Técnico Avanzado",
+      category: "Hardware & Optimización",
+      description: "Especialista en mantenimiento crítico de estaciones de trabajo. Realizo limpiezas profundas, aplicaciones de pasta térmica de alto rendimiento y diagnósticos de hardware. Mi enfoque se centra en extender la vida útil del equipo y maximizar su eficiencia térmica y operativa.",
+      image: "/trabajos/pastatermica_t1.webp",
+      tech: ["Troubleshooting", "Thermal Mgmt", "Hardware Upgrade"]
+    }
+  ];
 
   return (
-    <div className="home-container d-flex justify-content-center align-items-center min-vh-100 py-5">
-      
-      <Fade triggerOnce>
-        <div className="hero-card p-4 p-md-5 text-center position-relative">
-            
-            <div className="bg-decoration"></div>
-
-            <div className="profile-wrapper mx-auto mb-4">
-                <div className="profile-circle">
-                    <Image
-                        src="/profilepicture.png"
-                        alt="Juan Ignacio Di Grazia"
-                        layout="fill"
-                        objectFit="cover"
-                        priority
-                        className="profile-img"
-                    />
-                </div>
-                <div className="ring-animation"></div>
-            </div>
-
-            {/* Textos Principales */}
-            <h1 className="fw-bold display-6 mb-2 text-dark">Juan Ignacio Di Grazia</h1>
-            
-            <div className="typeit-wrapper mb-4 d-flex flex-column justify-content-center align-items-center">
-                <div className="badge bg-light text-primary px-3 py-2 mb-2 rounded-pill border border-primary-subtle shadow-sm">
-                   <TypeIt options={{ cursor: false, afterComplete: () => setShowSecond(true) }}>
-                        Frontend & Backend Developer
-                   </TypeIt>
+    <div className="home-wrapper">
+      {/* --- HERO SECTION --- */}
+      <section className="hero-section d-flex align-items-center justify-content-center">
+        <div className="container">
+          <Fade triggerOnce>
+            <div className="hero-content text-center">
+                <div className="profile-wrapper mx-auto mb-4">
+                    <div className="profile-circle">
+                        <Image
+                            src="/profilepicture.webp"
+                            alt="Juan Ignacio Di Grazia"
+                            layout="fill"
+                            objectFit="cover"
+                            priority
+                            className="profile-img"
+                        />
+                    </div>
+                    <div className="ring-animation"></div>
                 </div>
 
-                {showSecond && (
-                    <div className="badge bg-light text-success px-3 py-2 mb-2 rounded-pill border border-success-subtle shadow-sm">
-                         <TypeIt options={{ cursor: false, afterComplete: () => setShowThird(true) }}>
-                            Software & Hardware Technician
-                         </TypeIt>
-                    </div>
-                )}
-
-                {showThird && (
-                    <div className="badge bg-light text-info px-3 py-2 rounded-pill border border-info-subtle shadow-sm">
-                        <TypeIt options={{ cursor: false }}>
-                            AI Specialist & Consultant
-                        </TypeIt>
-                    </div>
-                )}
-            </div>
-
-            <p className="text-muted lead fs-6 mb-4 px-lg-5">
-                Ingeniería en Sistemas (UTN) • Creando soluciones tecnológicas integrales.
-            </p>
-
-            {/* Botones de Acción */}
-            <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-                <a 
-                    href="/DiGraziaCV.pdf" 
-                    download="/DiGraziaCV.pdf" 
-                    className="btn btn-primary btn-lg px-4 shadow-sm d-flex align-items-center gap-2 btn-custom"
-                >
-                    <FaDownload size={16}/> Descargar CV
-                </a>
+                <h1 className="fw-bold display-4 mb-2 text-dark">Juan Ignacio Di Grazia</h1>
                 
-                <button 
-                    onClick={toggleModal}
-                    className="btn btn-outline-success btn-lg px-4 shadow-sm d-flex align-items-center gap-2 btn-custom"
-                >
-                    <FaPaperPlane size={16}/> Contact Me
-                </button>
-            </div>
-        </div>
-      </Fade>
+                <div className="typeit-wrapper mb-4 d-flex flex-column align-items-center">
+                    <div className="badge-modern bg-green-soft text-success mb-2">
+                       <TypeIt options={{ cursor: false, afterComplete: () => setShowSecond(true) }}>
+                            Full-Stack Developer
+                       </TypeIt>
+                    </div>
 
-      {/* --- MODAL DE CONTACTO  --- */}
-      {isModalVisible && (
-        <div className="custom-modal-overlay" onClick={toggleModal}>
-            <div className="custom-modal-content" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                    <h5 className="modal-title">Contacto</h5>
-                    <button type="button" className="btn-close-custom" onClick={toggleModal}>✕</button>
+                    {showSecond && (
+                        <div className="badge-modern bg-blue-soft text-primary mb-2">
+                             <TypeIt options={{ cursor: false, afterComplete: () => setShowThird(true) }}>
+                                Hardware & IT Specialist
+                             </TypeIt>
+                        </div>
+                    )}
+
+                    {showThird && (
+                        <div className="badge-modern bg-info-soft text-info">
+                            <TypeIt options={{ cursor: false }}>
+                                AI & Solutions Consultant
+                            </TypeIt>
+                        </div>
+                    )}
                 </div>
-                <div className="modal-body">
-                    <form onSubmit={handleSubmit}>
-                        <div style={{ display: 'none' }}><input type="text" name="empresa" value={empresa} onChange={(e) => setEmpresa(e.target.value)} /></div>
-                        <div className="input-group">
-                            <label>Nombre</label>
-                            <input type="text" placeholder="Ingresa tu nombre" onChange={(e) => setFullname(e.target.value)} value={fullname} />
-                        </div>
-                        <div className="input-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="correo@example.com" onChange={(e) => setEmail(e.target.value)} value={email} />
-                        </div>
-                        <div className="input-group">
-                            <label>Mensaje</label>
-                            <textarea placeholder="Hola Juan..." rows="3" onChange={(e) => setAboutMe(e.target.value)} value={aboutMe}></textarea>
-                            <span className="char-count">{aboutMe.length}/500</span>
-                        </div>
-                        {error.length > 0 && <div className="alert-box error"><ul>{error.map((e,i)=><li key={i}>{e}</li>)}</ul></div>}
-                        {success && <div className="alert-box success">¡Enviado!</div>}
-                        <button type="submit" className="btn-submit" disabled={loading}>{loading ? "..." : "Enviar"}</button>
-                    </form>
+
+                <p className="lead text-muted mb-5 mx-auto hero-subtitle">
+                    Ingeniería en Sistemas (UTN) • Transformando ideas complejas en soluciones digitales y físicas de alto impacto.
+                </p>
+
+                <div className="d-flex justify-content-center gap-3 flex-wrap mb-5">
+                    <a href="/DiGraziaCV.pdf" download className="btn-modern btn-primary-gradient">
+                        <FaDownload /> Descargar CV
+                    </a>
+                    <button onClick={toggleModal} className="btn-modern btn-outline-modern">
+                        <FaPaperPlane /> Contact Me
+                    </button>
                 </div>
             </div>
+          </Fade>
         </div>
-      )}
+      </section>
 
-      {/* ESTILOS CSS */}
+      {/* --- CURRENT STATUS SECTION --- */}
+      <section className="current-status-section py-5">
+        <div className="container">
+            <Fade triggerOnce>
+                <div className="status-card mx-auto">
+                    <div className="row align-items-center g-4">
+                        <div className="col-12 col-md-auto text-center">
+                            <div className="status-icon-box">
+                                <FaUniversity />
+                            </div>
+                        </div>
+                        <div className="col-12 col-md text-center text-md-start">
+                            <h6 className="text-success fw-bold text-uppercase mb-1" style={{ letterSpacing: "1px", fontSize: "0.8rem" }}>Actualidad</h6>
+                            <h3 className="fw-bold mb-2">Soporte Técnico @ UTN FRBA</h3>
+                            <p className="text-muted mb-0">
+                                Me desempeño actualmente brindando soporte técnico integral a usuarios en la <strong>Universidad Tecnológica Nacional</strong> (Facultad Regional Buenos Aires). Gestiono infraestructura de laboratorios, resuelvo incidencias críticas y aseguro la continuidad tecnológica para alumnos y docentes de la facultad.
+                            </p>
+                        </div>
+                        <div className="col-12 col-md-auto text-center">
+                            <div className="status-badge">
+                                <span className="status-dot"></span>
+                                Activo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Fade>
+        </div>
+      </section>
+
+      {/* --- FEATURED PROJECTS SECTION --- */}
+      <section className="featured-section py-5">
+        <div className="container">
+            <Fade triggerOnce>
+                <div className="text-center mb-5">
+                    <h2 className="fw-bold section-title">Proyectos Destacados</h2>
+                    <div className="title-bar mx-auto"></div>
+                    <p className="text-muted mt-3">Una breve mirada a mi metodología y resultados.</p>
+                </div>
+            </Fade>
+
+            <div className="row g-5">
+                {featuredProjects.map((project, idx) => (
+                    <div className="col-12 col-lg-6" key={idx}>
+                        <Fade delay={idx * 200} triggerOnce>
+                            <div className="featured-card">
+                                <div className="card-image-box">
+                                    <Image src={project.image} alt={project.title} layout="fill" objectFit="cover" />
+                                    <div className="card-category-tag">{project.category}</div>
+                                </div>
+                                <div className="card-content-box p-4">
+                                    <h3 className="fw-bold mb-3">{project.title}</h3>
+                                    <p className="text-muted small mb-4">{project.description}</p>
+                                    <div className="d-flex flex-wrap gap-2">
+                                        {project.tech.map((t, i) => (
+                                            <span key={i} className="tech-tag">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </Fade>
+                    </div>
+                ))}
+            </div>
+
+            <div className="text-center mt-5">
+                <a href="/mis-proyectos" className="view-more-link">
+                    Ver todos los proyectos <span className="arrow">→</span>
+                </a>
+            </div>
+        </div>
+      </section>
+
+      {/* --- MODAL --- */}
+      <Modal isVisible={isModalVisible} onClose={toggleModal} title="Contacto">
+        <ContactForm />
+      </Modal>
+
       <style jsx>{`
-        .home-container {
-            background-color: #f8f9fa; /* Fondo gris muy suave para toda la página */
-        }
+        .home-wrapper { background-color: #fcfcfc; }
         
-        .hero-card {
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            width: 100%;
-            max-width: 700px;
-            z-index: 10;
-        }
-
-        .bg-decoration {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border-radius: 24px;
-            background: radial-gradient(circle at top right, rgba(13, 110, 253, 0.05), transparent 40%),
-                        radial-gradient(circle at bottom left, rgba(25, 135, 84, 0.05), transparent 40%);
-            z-index: -1;
-        }
-
-        /* Foto de Perfil */
-        .profile-wrapper {
-            position: relative;
-            width: 180px; height: 180px;
-        }
-        .profile-circle {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 2;
-        }
-        .ring-animation {
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border-radius: 50%;
-            border: 2px dashed #0d6efd; /* Color primario */
-            opacity: 0.3;
-            animation: spin 20s linear infinite;
-            z-index: 1;
-        }
+        /* Hero Section */
+        .hero-section { min-height: 80vh; position: relative; padding: 80px 0; background: radial-gradient(circle at 10% 20%, rgba(25, 135, 84, 0.03) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(13, 110, 253, 0.03) 0%, transparent 40%); }
+        .hero-subtitle { max-width: 600px; }
+        
+        .profile-wrapper { position: relative; width: 200px; height: 200px; }
+        .profile-circle { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; border: 6px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; z-index: 2; }
+        .ring-animation { position: absolute; top: -12px; left: -12px; right: -12px; bottom: -12px; border-radius: 50%; border: 2px dashed #198754; opacity: 0.2; animation: spin 25s linear infinite; z-index: 1; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* TypeIt Tags */
-        .typeit-wrapper {
-            min-height: 120px; /* Evita saltos de altura */
-        }
+        /* Badges */
+        .badge-modern { padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; border: 1px solid rgba(0,0,0,0.05); }
+        .bg-green-soft { background: rgba(25, 135, 84, 0.08); }
+        .bg-blue-soft { background: rgba(13, 110, 253, 0.08); }
+        .bg-info-soft { background: rgba(13, 202, 240, 0.08); }
 
-        /* Botones */
-        .btn-custom {
-            border-radius: 12px;
-            font-weight: 600;
-            transition: transform 0.2s;
-        }
-        .btn-custom:hover {
-            transform: translateY(-3px);
-        }
+        /* Buttons */
+        .btn-modern { padding: 12px 30px; border-radius: 12px; font-weight: 700; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease; text-decoration: none; border: none; cursor: pointer; }
+        .btn-primary-gradient { background: linear-gradient(135deg, #198754, #157347); color: white; box-shadow: 0 10px 20px rgba(25, 135, 84, 0.2); }
+        .btn-primary-gradient:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(25, 135, 84, 0.3); }
+        .btn-outline-modern { background: white; color: #555; border: 1px solid #ddd; }
+        .btn-outline-modern:hover { background: #f8f9fa; transform: translateY(-3px); border-color: #bbb; }
 
-        /* --- Estilos Modal (Reutilizados del Navbar) --- */
-        .custom-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 1rem; backdrop-filter: blur(3px); }
-        .custom-modal-content { background: white; width: 100%; max-width: 500px; border-radius: 16px; padding: 0; overflow: hidden; animation: popUp 0.3s ease-out; }
-        @keyframes popUp { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .modal-header { padding: 1rem; border-bottom: 1px solid #eee; display: flex; justify-content: center; position: relative; }
-        .modal-title { font-weight: bold; margin: 0; }
-        .btn-close-custom { position: absolute; right: 1rem; border: none; background: none; font-size: 1.2rem; color: #999; cursor: pointer; }
-        .modal-body { padding: 1.5rem; }
-        .char-count { text-align: right; font-size: 0.75rem; color: #aaa; }
-        .input-group { margin-bottom: 1rem; text-align: left; }
-        .input-group label { display: block; font-size: 0.85rem; font-weight: bold; color: #555; margin-bottom: 0.3rem; }
-        .input-group input, .input-group textarea { width: 100%; padding: 0.6rem; border: 1px solid #ddd; border-radius: 8px; }
-        .btn-submit { width: 100%; padding: 0.7rem; background: #198754; color: white; border: none; border-radius: 8px; font-weight: bold; margin-top: 0.5rem; }
-        .alert-box { padding: 0.5rem; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.9rem; }
-        .alert-box.error { background: #f8d7da; color: #842029; }
-        .alert-box.success { background: #d1e7dd; color: #0f5132; text-align: center; }
+        /* Current Status Section */
+        .status-card { background: white; border-radius: 24px; padding: 2rem; max-width: 900px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.03); position: relative; overflow: hidden; }
+        .status-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: #198754; }
+        .status-icon-box { width: 60px; height: 60px; background: rgba(25, 135, 84, 0.1); color: #198754; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto; }
+        .status-badge { display: inline-flex; align-items: center; gap: 8px; background: #f1f3f5; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #495057; text-transform: uppercase; }
+        .status-dot { width: 8px; height: 8px; background: #198754; border-radius: 50%; box-shadow: 0 0 8px #198754; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+
+        /* Featured Section */
+        .section-title { font-size: 2.5rem; color: #1a1a1a; }
+        .title-bar { width: 60px; height: 4px; background: #198754; border-radius: 2px; margin-top: 15px; }
         
+        .featured-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); transition: all 0.4s ease; height: 100%; }
+        .featured-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        
+        .card-image-box { position: relative; width: 100%; height: 280px; overflow: hidden; }
+        .card-category-tag { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.9); padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #198754; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; }
+        
+        .tech-tag { background: #f1f3f5; color: #495057; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        
+        .view-more-link { font-weight: 700; color: #198754; text-decoration: none; font-size: 1.1rem; transition: all 0.3s; }
+        .view-more-link .arrow { transition: transform 0.3s; display: inline-block; }
+        .view-more-link:hover .arrow { transform: translateX(8px); }
+
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            .card-image-box { height: 200px; }
+            .status-card { padding: 1.5rem; }
+        }
       `}</style>
     </div>
   );

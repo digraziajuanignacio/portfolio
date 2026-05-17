@@ -17,7 +17,7 @@ export default function MyWorks() {
       description: "Este sitio web. Desarrollado con Next.js 14, React y Bootstrap. Cuenta con validaciones anti-spam y diseño responsivo.",
       // AQUI EL EJEMPLO: ARRAY DE OBJETOS
       images: [
-        { url: "/trabajos/portafolios_d1.png", focus: "center" } // Enfoca la cara (arriba)
+        { url: "/images/trabajos/portafolios_d1.webp", focus: "center" } // Enfoca la cara (arriba)
       ],
       tags: ["Next.js", "React", "Bootstrap", "MongoDB"],
       links: [
@@ -32,9 +32,9 @@ export default function MyWorks() {
       description: "Mantenimiento integral: Limpieza profunda de ventiladores, cambio de pasta térmica. Verificación de temperaturas post-mantenimiento.",
       // EJEMPLO CON MULTIPLES FOTOS Y DIFERENTES FOCOS
       images: [
-        { url: "/trabajos/suciedad_t1.jpg", focus: "center 70%" },  // Enfoca un poco abajo
-        { url: "/trabajos/limpio_t1.jpg", focus: "center 90%" },
-        { url: "/trabajos/pastatermica_t1.jpg", focus: "center 65%" }    // Enfoca al centro
+        { url: "/images/trabajos/suciedad_t1.webp", focus: "center 70%" },  // Enfoca un poco abajo
+        { url: "/images/trabajos/limpio_t1.webp", focus: "center 90%" },
+        { url: "/images/trabajos/pastatermica_t1.webp", focus: "center 65%" }    // Enfoca al centro
       ],
       tags: ["Hardware", "Mantenimiento", "Upgrade"],
       specs: ["Vida Útil: Extendida", "Pasta: Nueva"]
@@ -45,7 +45,7 @@ export default function MyWorks() {
       title: "Cambio de Contraseña",
       description: "Recuperación de sesión de usuario con contraseña olvidada.",
       images: [
-        { url: "/trabajos/contraseña_t2.jpg", focus: "center 45%" } // Ejemplo: foco izquierda arriba
+        { url: "/images/trabajos/contraseña_t2.webp", focus: "center 45%" } // Ejemplo: foco izquierda arriba
       ],
       tags: ["Software", "Contraseñas", "Express"],
       links: [ { label: "Repo Privado", url: "#", icon: <FaGithub /> } ],
@@ -58,9 +58,9 @@ export default function MyWorks() {
     //   title: "Armado PC Gamer",
     //   description: "Ensamblaje completo, gestión de cables y configuración de BIOS. Pruebas de estrés realizadas y benchmarks sintéticos.",
     //   images: [
-    //     { url: "/profilepicture.png", focus: "center" },
-    //     { url: "/profilepicture.png", focus: "center bottom" }, // Enfoca el fondo
-    //     { url: "/profilepicture.png", focus: "right center" }   // Enfoca la derecha
+    //     { url: "/images/profilepicture.webp", focus: "center" },
+    //     { url: "/images/profilepicture.webp", focus: "center bottom" }, // Enfoca el fondo
+    //     { url: "/images/profilepicture.webp", focus: "right center" }   // Enfoca la derecha
     //   ],
     //   tags: ["Build", "Cable Mgmt", "BIOS"],
     //   specs: ["Ryzen 7", "RTX 3060"]

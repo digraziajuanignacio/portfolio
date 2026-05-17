@@ -19,26 +19,22 @@ const ProjectCard = ({ project }) => {
 
   return (
     <div className="project-card h-100 d-flex flex-column">
-      {/* WRAPPER PRINCIPAL DE IMAGEN */}
       <div className="card-img-wrapper">
         <div className={`category-badge ${project.category}`}>
           {project.category === 'dev' ? <FaCode /> : <FaLaptopMedical />}
         </div>
 
-        {/* EL "TREN" (TRACK) DE IMÁGENES */}
         <div 
             className="carousel-track"
             style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
         >
-            {/* AQUI ESTA EL CAMBIO: imgData ahora es un objeto {url, focus} */}
             {project.images.map((imgData, index) => (
                 <div key={index} className="carousel-image-item">
                      <Image
-                       src={imgData.url} // Accedemos a la URL
-                       alt={`${project.title} - imagen ${index + 1}`}
+                       src={imgData.url}
+                       alt={`${project.title} - ${index + 1}`}
                        layout="fill"
                        objectFit="cover"
-                       // Usamos el foco específico de ESTA imagen, o "center" si no tiene
                        objectPosition={imgData.focus || "center"} 
                        className="card-img"
                      />
@@ -59,7 +55,6 @@ const ProjectCard = ({ project }) => {
         )}
       </div>
 
-      {/* CONTENIDO DE TEXTO */}
       <div className="card-body p-4 d-flex flex-column flex-grow-1">
         <h4 className="fw-bold text-dark mb-2 title-clamp">{project.title}</h4>
         
@@ -76,7 +71,7 @@ const ProjectCard = ({ project }) => {
         <div className="mt-auto pt-3 border-top w-100">
           {project.category === 'dev' ? (
             <div className="d-flex gap-3">
-              {project.links && project.links.map((link, i) => (
+              {project.links?.map((link, i) => (
                 <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="minimal-link">
                   {link.icon}<span>{link.label}</span>
                 </a>
@@ -84,7 +79,7 @@ const ProjectCard = ({ project }) => {
             </div>
           ) : (
             <div className="d-flex justify-content-between align-items-center flex-wrap gap-2">
-              {project.specs && project.specs.map((spec, i) => (
+              {project.specs?.map((spec, i) => (
                 <div key={i} className="spec-item text-success fw-bold small">
                   <IoHardwareChipSharp className="me-1" /> {spec}
                 </div>

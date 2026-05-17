@@ -1,243 +1,184 @@
 "use client";
 import Image from "next/image";
 import { BiMapAlt } from "react-icons/bi";
-import { FaPhoneVolume } from "react-icons/fa6";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { TbWorldCode } from "react-icons/tb";
 import { Fade } from "react-awesome-reveal";
+import { FaCode, FaTools, FaLightbulb, FaRocket } from "react-icons/fa";
 
 export default function About() {
+  const skills = [
+    { name: "React & Next.js", level: "85%", icon: <FaCode />, category: "dev" },
+    { name: "Javascript / Node.js", level: "75%", icon: <FaCode />, category: "dev" },
+    { name: "Soporte & Hardware", level: "95%", icon: <FaTools />, category: "tech" },
+    { name: "Optimización de Sistemas", level: "90%", icon: <FaTools />, category: "tech" }
+  ];
+
   return (
-    <section className="about-section py-5">
-      <Fade triggerOnce>
+    <div className="about-wrapper">
+      {/* --- INTRO SECTION --- */}
+      <section className="about-intro py-5">
         <div className="container">
-          <div className="about-card p-4 p-md-5">
-            
-            <div className="text-center mb-5 position-relative">
-              <h1 className="fw-bold display-5 text-dark">Sobre Mí</h1>
-              <div className="title-underline"></div>
+          <div className="row align-items-center g-5">
+            <div className="col-12 col-lg-5">
+              <Fade triggerOnce>
+                <div className="about-image-wrapper">
+                    <div className="image-main">
+                        <Image
+                            src="/images/profilepicture.webp"
+                            alt="Juan Ignacio"
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-4"
+                        />
+                    </div>
+                    <div className="experience-badge">
+                        <span className="number">+5</span>
+                        <span className="text">Años de Pasión IT</span>
+                    </div>
+                </div>
+              </Fade>
             </div>
-
-            <div className="row justify-content-center">
-              
-              <div className="col-12 col-lg-4 mb-5 mb-lg-0">
-                <h3 className="fw-bold mb-3 text-primary-gradient">Juan Ignacio</h3>
-                <p className="text-muted lead fs-6 mb-4" style={{ lineHeight: "1.8" }}>
-                  Extensa experiencia en soluciones informáticas. Me especializo en 
-                  <strong> mantenimiento de hardware</strong>, <strong>optimización de software</strong> y 
-                  en el <strong>desarrollo web</strong>. Busco ampliar mi experiencia laboral combinando 
-                  la resolución práctica de problemas con la innovación.
-                </p>
-                
-                <div className="contact-list">
-                  <div className="contact-item">
-                    <span className="icon-box bg-light text-primary"><BiMapAlt /></span>
-                    <span className="text-dark">Buenos Aires, CABA</span>
-                  </div>
-                  <div className="contact-item">
-                    <span className="icon-box bg-light text-danger"><IoMailUnreadOutline /></span>
-                    <span className="text-dark">digraziatech@gmail.com</span>
-                  </div>
-                  <div className="contact-item">
-                    <span className="icon-box bg-light text-info"><TbWorldCode /></span>
-                    <span className="text-dark">www.digraziajuanignacio.netlify.app</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* --- COLUMNA 2: FOTO --- */}
-              <div className="col-12 col-lg-4 mb-5 mb-lg-0 d-flex justify-content-center align-items-start">
-                <div className="profile-wrapper">
-                  <div className="profile-img-container">
-                    <Image
-                      src="/profilepicture.png"
-                      alt="Juan Ignacio"
-                      layout="fill"
-                      objectFit="cover"
-                      priority
-                      className="profile-img"
-                    />
-                  </div>
-                  <div className="decorative-circle"></div>
-                </div>
-              </div>
-
-              {/* --- COLUMNA 3: SKILLS --- */}
-              <div className="col-12 col-lg-4">
-                <h3 className="fw-bold mb-3 text-primary-gradient">Skills Profesionales</h3>
-                <p className="text-muted small mb-4">
-                  Ingeniería en Sistemas (UTN) + Soporte Técnico + Full Stack Dev.
-                </p>
-
-                {/* DEVELOPMENT */}
-                <div className="skill-group mb-4">
-                  <h6 className="text-uppercase text-secondary fw-bold small mb-3">Development</h6>
+            
+            <div className="col-12 col-lg-7">
+              <Fade triggerOnce direction="right">
+                <div className="about-content">
+                  <h6 className="text-success fw-bold text-uppercase mb-2">Sobre Mí</h6>
+                  <h1 className="display-4 fw-bold mb-4">Juan Ignacio Di Grazia</h1>
+                  <p className="lead text-muted mb-4">
+                    Estudiante de <strong>Ingeniería en Sistemas en la UTN</strong>, fusionando la precisión del hardware con la creatividad del desarrollo de software.
+                  </p>
+                  <p className="text-muted mb-5" style={{ lineHeight: "1.8" }}>
+                    Mi trayectoria se define por la resolución práctica de problemas. Desde optimizar el rendimiento térmico de una estación de trabajo hasta construir arquitecturas web escalables, busco la excelencia técnica en cada detalle. Mi objetivo es crear soluciones que no solo funcionen, sino que perduren.
+                  </p>
                   
-                  <div className="skill-item mb-3">
-                    <div className="d-flex justify-content-between small fw-bold mb-1">
-                      <span>Javascript</span>
-                      <span>75%</span>
+                  <div className="contact-grid">
+                    <div className="contact-card">
+                      <div className="icon-box"><BiMapAlt /></div>
+                      <div>
+                        <span className="label">Ubicación</span>
+                        <span className="value">Buenos Aires, CABA</span>
+                      </div>
                     </div>
-                    <div className="progress rounded-pill" style={{ height: "8px" }}>
-                      <div className="progress-bar gradient-blue" role="progressbar" style={{ width: "75%" }}></div>
-                    </div>
-                  </div>
-
-                  <div className="skill-item mb-3">
-                    <div className="d-flex justify-content-between small fw-bold mb-1">
-                      <span>React & Next.js</span>
-                      <span>85%</span>
-                    </div>
-                    <div className="progress rounded-pill" style={{ height: "8px" }}>
-                      <div className="progress-bar gradient-blue" role="progressbar" style={{ width: "85%" }}></div>
-                    </div>
-                  </div>
-
-                  <div className="skill-item">
-                    <div className="d-flex justify-content-between small fw-bold mb-1">
-                      <span>MongoDB</span>
-                      <span>65%</span>
-                    </div>
-                    <div className="progress rounded-pill" style={{ height: "8px" }}>
-                      <div className="progress-bar gradient-blue" role="progressbar" style={{ width: "65%" }}></div>
+                    <div className="contact-card">
+                      <div className="icon-box"><IoMailUnreadOutline /></div>
+                      <div>
+                        <span className="label">Email</span>
+                        <span className="value">digraziatech@gmail.com</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                {/* IT SUPPORT */}
-                <div className="skill-group">
-                  <h6 className="text-uppercase text-secondary fw-bold small mb-3">IT Support & Hardware</h6>
-                  
-                  <div className="skill-item mb-3">
-                    <div className="d-flex justify-content-between small fw-bold mb-1">
-                      <span>Reparación & Armado</span>
-                      <span>95%</span>
-                    </div>
-                    <div className="progress rounded-pill" style={{ height: "8px" }}>
-                      <div className="progress-bar gradient-green" role="progressbar" style={{ width: "95%" }}></div>
-                    </div>
-                  </div>
-
-                  <div className="skill-item mb-3">
-                    <div className="d-flex justify-content-between small fw-bold mb-1">
-                      <span>Optimización Software</span>
-                      <span>90%</span>
-                    </div>
-                    <div className="progress rounded-pill" style={{ height: "8px" }}>
-                      <div className="progress-bar gradient-green" role="progressbar" style={{ width: "90%" }}></div>
-                    </div>
-                  </div>
-
-                  <div className="skill-item">
-                    <div className="d-flex justify-content-between small fw-bold mb-1">
-                      <span>Troubleshooting</span>
-                      <span>85%</span>
-                    </div>
-                    <div className="progress rounded-pill" style={{ height: "8px" }}>
-                      <div className="progress-bar gradient-green" role="progressbar" style={{ width: "85%" }}></div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+              </Fade>
             </div>
           </div>
         </div>
-      </Fade>
+      </section>
 
-      {/* ESTILOS CSS PERSONALIZADOS */}
+      {/* --- SKILLS SECTION --- */}
+      <section className="about-skills py-5 bg-white">
+        <div className="container">
+            <div className="text-center mb-5">
+                <h2 className="fw-bold h1">Skills Profesionales</h2>
+                <div className="title-bar mx-auto"></div>
+            </div>
+
+            <div className="row g-4">
+                {skills.map((skill, idx) => (
+                    <div className="col-12 col-md-6" key={idx}>
+                        <Fade delay={idx * 100} triggerOnce>
+                            <div className="skill-modern-card">
+                                <div className="d-flex justify-content-between align-items-center mb-3">
+                                    <div className="d-flex align-items-center gap-3">
+                                        <div className={`skill-icon ${skill.category}`}>{skill.icon}</div>
+                                        <span className="fw-bold">{skill.name}</span>
+                                    </div>
+                                    <span className="text-muted fw-bold">{skill.level}</span>
+                                </div>
+                                <div className="progress-container">
+                                    <div className={`progress-bar-fill ${skill.category}`} style={{ width: skill.level }}></div>
+                                </div>
+                            </div>
+                        </Fade>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* --- PHILOSOPHY SECTION --- */}
+      <section className="about-philosophy py-5">
+        <div className="container">
+            <div className="row g-4 text-center">
+                <div className="col-12 col-md-4">
+                    <Fade bottom triggerOnce>
+                        <div className="philo-card">
+                            <div className="philo-icon"><FaLightbulb /></div>
+                            <h4>Innovación</h4>
+                            <p className="text-muted small">Siempre buscando la tecnología más eficiente para cada proyecto.</p>
+                        </div>
+                    </Fade>
+                </div>
+                <div className="col-12 col-md-4">
+                    <Fade bottom delay={200} triggerOnce>
+                        <div className="philo-card">
+                            <div className="philo-icon"><FaRocket /></div>
+                            <h4>Rendimiento</h4>
+                            <p className="text-muted small">Optimización máxima tanto en líneas de código como en hardware físico.</p>
+                        </div>
+                    </Fade>
+                </div>
+                <div className="col-12 col-md-4">
+                    <Fade bottom delay={400} triggerOnce>
+                        <div className="philo-card">
+                            <div className="philo-icon"><FaTools /></div>
+                            <h4>Mantenimiento</h4>
+                            <p className="text-muted small">Soluciones diseñadas para ser duraderas y fáciles de escalar.</p>
+                        </div>
+                    </Fade>
+                </div>
+            </div>
+        </div>
+      </section>
+
       <style jsx>{`
-        .about-card {
-          background: #ffffff;
-          border-radius: 20px;
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Sombra suave y moderna */
-          border: 1px solid rgba(0,0,0,0.02);
-        }
-
-        .title-underline {
-          width: 60px;
-          height: 4px;
-          background: linear-gradient(90deg, #0d6efd, #0dcaf0);
-          margin: 10px auto 0;
-          border-radius: 2px;
-        }
-
-        .text-primary-gradient {
-          background: -webkit-linear-gradient(45deg, #0d6efd, #0a58ca);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        /* Iconos de contacto */
-        .contact-item {
-          display: flex;
-          align-items: center;
-          margin-bottom: 15px;
-        }
-        .icon-box {
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-right: 15px;
-          font-size: 1.1rem;
-          flex-shrink: 0;
-        }
-
-        /* Foto de Perfil */
-        .profile-wrapper {
-          position: relative;
-          width: 280px;
-          height: 280px;
-        }
-        .profile-img-container {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          overflow: hidden;
-          position: relative;
-          z-index: 2;
-          border: 5px solid white;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        .decorative-circle {
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background: linear-gradient(45deg, #0d6efd, #0dcaf0);
-          opacity: 0.2;
-          z-index: 1;
-          filter: blur(15px);
-          transform: scale(0.95);
-        }
-
-        /* Barras de Progreso */
-        .progress {
-          background-color: #e9ecef;
-          overflow: visible; /* Para efectos si quisieras agregar tooltips */
-        }
-        .gradient-blue {
-          background: linear-gradient(90deg, #0d6efd, #0dcaf0);
-          border-radius: 50px;
-          box-shadow: 0 2px 5px rgba(13, 110, 253, 0.3);
-        }
-        .gradient-green {
-          background: linear-gradient(90deg, #198754, #20c997);
-          border-radius: 50px;
-          box-shadow: 0 2px 5px rgba(25, 135, 84, 0.3);
-        }
+        .about-wrapper { background-color: #fcfcfc; }
         
-        /* Efecto Hover sutil en skills */
-        .skill-item:hover .progress-bar {
-          filter: brightness(1.1);
-          transition: all 0.3s ease;
+        /* Intro Section */
+        .about-image-wrapper { position: relative; width: 100%; height: 500px; }
+        .image-main { position: relative; width: 90%; height: 100%; z-index: 1; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+        .experience-badge { position: absolute; bottom: 30px; right: 0; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); z-index: 2; display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(0,0,0,0.05); }
+        .experience-badge .number { font-size: 2rem; font-weight: 800; color: #198754; line-height: 1; }
+        .experience-badge .text { font-size: 0.75rem; font-weight: 700; color: #555; text-transform: uppercase; margin-top: 5px; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .contact-card { display: flex; align-items: center; gap: 15px; padding: 15px; background: white; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); }
+        .icon-box { width: 40px; height: 40px; background: rgba(25, 135, 84, 0.1); color: #198754; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .contact-card .label { display: block; font-size: 0.75rem; color: #aaa; font-weight: 700; text-transform: uppercase; }
+        .contact-card .value { font-size: 0.9rem; color: #333; font-weight: 600; }
+
+        /* Skills Section */
+        .title-bar { width: 60px; height: 4px; background: #198754; border-radius: 2px; margin-top: 15px; }
+        .skill-modern-card { background: #f8f9fa; padding: 25px; border-radius: 20px; transition: all 0.3s ease; }
+        .skill-modern-card:hover { transform: translateY(-5px); background: white; box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .skill-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
+        .skill-icon.dev { background: linear-gradient(135deg, #0d6efd, #0dcaf0); }
+        .skill-icon.tech { background: linear-gradient(135deg, #198754, #20c997); }
+        .progress-container { width: 100%; height: 8px; background: #e9ecef; border-radius: 10px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; border-radius: 10px; }
+        .progress-bar-fill.dev { background: linear-gradient(90deg, #0d6efd, #0dcaf0); }
+        .progress-bar-fill.tech { background: linear-gradient(90deg, #198754, #20c997); }
+
+        /* Philosophy Section */
+        .philo-card { padding: 40px 20px; }
+        .philo-icon { font-size: 2.5rem; color: #198754; margin-bottom: 20px; opacity: 0.8; }
+        .philo-card h4 { font-weight: 700; margin-bottom: 15px; }
+
+        @media (max-width: 991px) {
+            .about-image-wrapper { height: 400px; margin-bottom: 40px; }
+            .image-main { width: 100%; }
         }
       `}</style>
-    </section>
+    </div>
   );
 }

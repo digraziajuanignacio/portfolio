@@ -11,7 +11,7 @@ export const metadata = {
   title: "Juan Ignacio | Portfolio", 
   description: "Portafolio profesional y servicios de IT",
   icons: {
-    icon: '/favicon.ico', 
+    icon: '/icons/favicon.ico', 
   },
   // -------------------
 };
