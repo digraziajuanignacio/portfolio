@@ -71,16 +71,23 @@ export default function Hero({ toggleModal }) {
       </div>
 
       <style jsx>{`
-        .hero-section { min-height: 80vh; position: relative; padding: 80px 0; background: radial-gradient(circle at 10% 20%, rgba(25, 135, 84, 0.03) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(13, 110, 253, 0.03) 0%, transparent 40%); }
+        .hero-section { 
+          min-height: 100vh; 
+          position: relative; 
+          padding: 120px 0 60px; 
+          display: flex;
+          align-items: center;
+          background: radial-gradient(circle at 10% 20%, rgba(25, 135, 84, 0.03) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(13, 110, 253, 0.03) 0%, transparent 40%); 
+        }
         .hero-subtitle { max-width: 600px; }
         .profile-wrapper { position: relative; width: 200px; height: 200px; }
         .profile-circle { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); position: relative; z-index: 2; }
         .profile-img { width: 100% !important; height: 100% !important; object-fit: cover; }
         .ring-animation { position: absolute; top: -12px; left: -12px; right: -12px; bottom: -12px; border-radius: 50%; border: 2px dashed #198754; opacity: 0.2; animation: spin 25s linear infinite; z-index: 1; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        .badge-modern { padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; border: 1px solid rgba(0,0,0,0.05); }
-        .bg-green-soft { background: rgba(25, 135, 84, 0.08); }
-        .bg-blue-soft { background: rgba(13, 110, 253, 0.08); }
+        .badge-modern { padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; border: 1px solid var(--border-color); }
+        .bg-green-soft { background: rgba(32, 201, 151, 0.08); }
+        .bg-blue-soft { background: rgba(55, 142, 254, 0.08); }
         .bg-info-soft { background: rgba(13, 202, 240, 0.08); }
         .btn-modern { padding: 12px 30px; border-radius: 12px; font-weight: 700; display: flex; align-items: center; gap: 10px; transition: all 0.3s ease; text-decoration: none; border: none; cursor: pointer; }
         .btn-primary-gradient { background: linear-gradient(135deg, #198754, #157347); color: white; box-shadow: 0 10px 20px rgba(25, 135, 84, 0.2); }

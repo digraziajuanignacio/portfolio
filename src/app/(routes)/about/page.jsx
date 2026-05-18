@@ -3,7 +3,7 @@ import Image from "next/image";
 import { BiMapAlt } from "react-icons/bi";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { Fade } from "react-awesome-reveal";
-import { FaCode, FaTools, FaLightbulb, FaRocket } from "react-icons/fa";
+import { FaCode, FaTools } from "react-icons/fa";
 
 export default function About() {
   const skills = [
@@ -15,8 +15,9 @@ export default function About() {
 
   return (
     <div className="about-wrapper">
-      <section className="about-intro py-5">
-        <div className="container">
+      {/* --- INTRO SECTION (CENTERED) --- */}
+      <section className="about-intro-full">
+        <div className="container py-4">
           <div className="row align-items-center g-5">
             <div className="col-12 col-lg-5">
               <Fade triggerOnce>
@@ -74,6 +75,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* --- SKILLS SECTION --- */}
       <section className="about-skills py-5 bg-white">
         <div className="container">
             <div className="text-center mb-5">
@@ -105,7 +107,16 @@ export default function About() {
       </section>
 
       <style jsx>{`
-        .about-wrapper { background-color: #fcfcfc; }
+        .about-wrapper { background-color: transparent; }
+        
+        .about-intro-full {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          padding-top: 100px;
+          padding-bottom: 60px;
+        }
+
         .about-image-wrapper { position: relative; width: 100%; height: 500px; }
         .image-main { position: relative; width: 90%; height: 100%; z-index: 1; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
         .profile-img-about { width: 100% !important; height: 100% !important; object-fit: cover; }
@@ -128,6 +139,7 @@ export default function About() {
         .progress-bar-fill.dev { background: linear-gradient(90deg, #0d6efd, #0dcaf0); }
         .progress-bar-fill.tech { background: linear-gradient(90deg, #198754, #20c997); }
         @media (max-width: 991px) {
+            .about-intro-full { padding-top: 120px; min-height: auto; }
             .about-image-wrapper { height: 400px; margin-bottom: 40px; }
             .image-main { width: 100%; }
         }

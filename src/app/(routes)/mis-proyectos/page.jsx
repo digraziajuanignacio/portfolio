@@ -52,9 +52,9 @@ export default function MyWorks() {
   const filteredProjects = filter === "all" ? projects : projects.filter(p => p.category === filter);
 
   return (
-    <div className="works-wrapper min-vh-100 pb-5">
-      {/* --- HEADER SECTION --- */}
-      <section className="works-header py-5 mb-4">
+    <div className="works-wrapper">
+      {/* --- HEADER SECTION (CENTERED) --- */}
+      <section className="works-header-full">
         <div className="container py-4">
           <Fade triggerOnce>
             <div className="text-center">
@@ -94,65 +94,42 @@ export default function MyWorks() {
       </section>
 
       {/* --- PROJECTS GRID --- */}
-      <div className="container">
-        <div className="row g-4 justify-content-center">
-            {filteredProjects.map((project, index) => (
-               <div key={project.id} className="col-12 col-md-6 col-xl-4 d-flex align-items-stretch">
-                 <Fade delay={index * 100} triggerOnce cascade style={{ width: '100%' }}>
-                   <ProjectCard project={project} />
-                 </Fade>
-               </div>
-            ))}
+      <section className="py-5">
+        <div className="container">
+          <div className="row g-4 justify-content-center">
+              {filteredProjects.map((project, index) => (
+                 <div key={project.id} className="col-12 col-md-6 col-xl-4 d-flex align-items-stretch">
+                   <Fade delay={index * 100} triggerOnce cascade style={{ width: '100%' }}>
+                     <ProjectCard project={project} />
+                   </Fade>
+                 </div>
+              ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       <style jsx>{`
-        .works-wrapper { background-color: #fcfcfc; }
+        .works-wrapper { background-color: transparent; }
         
-        .works-header { 
+        .works-header-full { 
+          min-height: 60vh;
+          display: flex;
+          align-items: center;
+          padding-top: 100px;
+          padding-bottom: 20px;
           background: radial-gradient(circle at top right, rgba(25, 135, 84, 0.03), transparent 30%), 
                       radial-gradient(circle at top left, rgba(13, 110, 253, 0.03), transparent 30%);
         }
 
         .title-underline { width: 80px; height: 5px; background: #198754; border-radius: 5px; }
-
         .filter-wrapper { display: inline-flex; justify-content: center; width: 100%; }
-        
-        .filter-pills { 
-          background: white; 
-          border-radius: 16px; 
-          display: flex; 
-          gap: 5px; 
-          box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
-          border: 1px solid rgba(0,0,0,0.05);
-          padding: 6px !important;
-        }
+        .filter-pills { background: white; border-radius: 16px; display: flex; gap: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); padding: 6px !important; }
+        .filter-btn { border: none; padding: 10px 25px; border-radius: 12px; font-weight: 700; font-size: 0.9rem; color: #666; background: transparent; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; cursor: pointer; }
+        .filter-btn.active { background-color: #198754; color: white; box-shadow: 0 8px 20px rgba(25, 135, 84, 0.25); }
+        .filter-btn:hover:not(.active) { background-color: rgba(25, 135, 84, 0.05); color: #198754; }
 
-        .filter-btn { 
-          border: none; 
-          padding: 10px 25px; 
-          border-radius: 12px; 
-          font-weight: 700; 
-          font-size: 0.9rem;
-          color: #666; 
-          background: transparent;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          display: flex;
-          align-items: center;
-        }
-
-        .filter-btn.active { 
-          background-color: #198754; 
-          color: white; 
-          box-shadow: 0 8px 20px rgba(25, 135, 84, 0.25); 
-        }
-
-        .filter-btn:hover:not(.active) { 
-          background-color: rgba(25, 135, 84, 0.05); 
-          color: #198754;
-        }
-
-        @media (max-width: 576px) {
+        @media (max-width: 991px) {
+          .works-header-full { min-height: auto; padding-top: 120px; }
           .filter-pills { flex-direction: column; width: 100%; max-width: 250px; }
           .filter-btn { width: 100%; justify-content: center; }
           .display-4 { font-size: 2.5rem; }

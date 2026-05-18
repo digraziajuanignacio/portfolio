@@ -1,18 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./CSS/globals.css";
 import NavBar from "./Components/Layout/NavBar";
 import Footer from "./Components/Layout/Footer";
 import BootstrapClient from "./Components/Layout/BootstrapClient";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Providers } from "./Components/UI/Providers";
 
 export const metadata = {
   metadataBase: new URL('https://juanignacio.tech'),
@@ -58,12 +48,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NavBar />
-        <main>{children}</main>
-        <Footer />
-        <BootstrapClient />
+    <html lang="es" suppressHydrationWarning>
+      <body className="antialiased">
+        <Providers>
+          <NavBar />
+          <main>{children}</main>
+          <Footer />
+          <BootstrapClient />
+        </Providers>
       </body>
     </html>
   );

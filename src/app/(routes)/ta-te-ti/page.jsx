@@ -154,7 +154,7 @@ export default function TaTeTi() {
       </div>
 
       <style jsx>{`
-        .game-wrapper-full { background-color: #fcfcfc; position: relative; z-index: 1; }
+        .game-wrapper-full { background-color: transparent; position: relative; z-index: 1; }
         .title-underline { width: 60px; height: 4px; background: #198754; border-radius: 2px; margin-top: 15px; }
         .ai-icon-wrapper { width: 70px; height: 70px; background: rgba(25, 135, 84, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #198754; box-shadow: 0 10px 20px rgba(25, 135, 84, 0.1); }
         .game-card-modern { background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); text-align: center; }

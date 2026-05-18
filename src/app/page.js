@@ -25,7 +25,7 @@ export default function Home() {
       </Modal>
 
       <style jsx>{`
-        .home-wrapper { background-color: #fcfcfc; overflow-x: hidden; }
+        .home-wrapper { background-color: transparent; overflow-x: hidden; }
       `}</style>
     </div>
   );

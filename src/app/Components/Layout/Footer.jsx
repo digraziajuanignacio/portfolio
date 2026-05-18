@@ -29,11 +29,12 @@ const Footer = () => {
 
       <style jsx>{`
         .footer-section { 
-          background-color: #ffffff; 
+          background-color: var(--card-bg); 
           position: relative; 
           width: 100%; 
           padding-top: 3rem;
           margin-top: 2rem;
+          border-top: 1px solid var(--border-color);
         }
         
         /* Efecto de transición suave */
@@ -44,7 +45,7 @@ const Footer = () => {
           left: 0;
           width: 100%;
           height: 2rem;
-          background: linear-gradient(to bottom, transparent, #ffffff);
+          background: linear-gradient(to bottom, transparent, var(--card-bg));
           pointer-events: none;
         }
 
@@ -56,12 +57,13 @@ const Footer = () => {
           top: 0; 
           left: 0; 
         }
-        .brand-text { font-weight: 800; background: -webkit-linear-gradient(45deg, #333, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .brand-text { font-weight: 800; color: var(--text-dark); }
         .social-links { display: inline-flex; gap: 1.5rem; }
-        .social-icon { font-size: 1.5rem; color: #6c757d; transition: all 0.3s ease; display: flex; align-items: center; }
+        .social-icon { font-size: 1.5rem; color: var(--text-muted); transition: all 0.3s ease; display: flex; align-items: center; }
         .social-icon:hover { transform: translateY(-3px); }
         .social-icon:hover :global(svg) { filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
-        .social-icon:nth-child(1):hover { color: #333; }
+        .social-icon:nth-child(1):hover { color: var(--text-dark); }
         .social-icon:nth-child(2):hover { color: #0077b5; }
         .social-icon:nth-child(3):hover { color: #e1306c; }
         .social-icon:nth-child(4):hover { color: #ea4335; }

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
+import { FaCode, FaTools, FaLightbulb, FaRocket } from "react-icons/fa";
 
 export default function FeaturedProjects() {
   const featuredProjects = [
@@ -69,14 +70,15 @@ export default function FeaturedProjects() {
       </div>
 
       <style jsx>{`
-        .section-title { font-size: 2.5rem; color: #1a1a1a; }
-        .title-bar { width: 60px; height: 4px; background: #198754; border-radius: 2px; margin-top: 15px; }
-        .featured-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); transition: all 0.4s ease; height: 100%; }
+        .section-title { font-size: 2.5rem; color: var(--text-dark); }
+        .title-bar { width: 60px; height: 4px; background: var(--primary-color); border-radius: 2px; margin-top: 15px; }
+        .featured-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid var(--border-color); transition: all 0.4s ease; height: 100%; }
         .featured-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
         .card-image-box { position: relative; width: 100%; height: 280px; overflow: hidden; }
-        .card-category-tag { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.9); padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #198754; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; }
-        .tech-tag { background: #f1f3f5; color: #495057; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
-        .view-more-link { font-weight: 700; color: #198754; text-decoration: none; font-size: 1.1rem; transition: all 0.3s; }
+        .card-category-tag { position: absolute; top: 20px; right: 20px; background: var(--card-bg); padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; border: 1px solid var(--border-color); }
+        .tech-tag { background: rgba(0,0,0,0.05); color: var(--text-muted); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        [data-theme='dark'] .tech-tag { background: rgba(255,255,255,0.05); }
+        .view-more-link { font-weight: 700; color: var(--primary-color); text-decoration: none; font-size: 1.1rem; transition: all 0.3s; }
         .view-more-link .arrow { transition: transform 0.3s; display: inline-block; }
         .view-more-link:hover .arrow { transform: translateX(8px); }
         @media (max-width: 768px) { .section-title { font-size: 2rem; } .card-image-box { height: 200px; } }

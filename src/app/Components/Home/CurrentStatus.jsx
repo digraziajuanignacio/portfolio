@@ -33,11 +33,12 @@ export default function CurrentStatus() {
       </div>
 
       <style jsx>{`
-        .status-card { background: white; border-radius: 24px; padding: 2rem; max-width: 900px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.03); position: relative; overflow: hidden; }
-        .status-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: #198754; }
-        .status-icon-box { width: 60px; height: 60px; background: rgba(25, 135, 84, 0.1); color: #198754; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto; }
-        .status-badge { display: inline-flex; align-items: center; gap: 8px; background: #f1f3f5; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: #495057; text-transform: uppercase; }
-        .status-dot { width: 8px; height: 8px; background: #198754; border-radius: 50%; box-shadow: 0 0 8px #198754; animation: pulse 2s infinite; }
+        .status-card { background: var(--card-bg); border-radius: 24px; padding: 2rem; max-width: 900px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid var(--border-color); position: relative; overflow: hidden; }
+        .status-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--primary-color); }
+        .status-icon-box { width: 60px; height: 60px; background: rgba(32, 201, 151, 0.1); color: var(--primary-color); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto; }
+        .status-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.05); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+        [data-theme='dark'] .status-badge { background: rgba(255,255,255,0.05); }
+        .status-dot { width: 8px; height: 8px; background: var(--primary-color); border-radius: 50%; box-shadow: 0 0 8px var(--primary-color); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
         @media (max-width: 768px) { .status-card { padding: 1.5rem; } }
       `}</style>

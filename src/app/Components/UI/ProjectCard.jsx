@@ -44,8 +44,8 @@ const ProjectCard = ({ project }) => {
 
         {project.images.length > 1 && (
           <>
-            <button className="carousel-btn prev" onClick={prevImage}><FaChevronLeft /></button>
-            <button className="carousel-btn next" onClick={nextImage}><FaChevronRight /></button>
+            <button className="carousel-btn prev" onClick={prevImage} aria-label="Anterior"><FaChevronLeft /></button>
+            <button className="carousel-btn next" onClick={nextImage} aria-label="Siguiente"><FaChevronRight /></button>
             <div className="carousel-indicators-custom">
                 {project.images.map((_, idx) => (
                     <span key={idx} className={`indicator-dot ${idx === currentImageIndex ? 'active' : ''}`}></span>
@@ -56,9 +56,9 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <div className="card-body p-4 d-flex flex-column flex-grow-1">
-        <h4 className="fw-bold text-dark mb-2 title-clamp">{project.title}</h4>
+        <h4 className="fw-bold text-dark-mode mb-2 title-clamp">{project.title}</h4>
         
-        <p className="text-muted small flex-grow-1 description-clamp">
+        <p className="text-muted-mode small flex-grow-1 description-clamp">
             {project.description}
         </p>
 
@@ -68,7 +68,7 @@ const ProjectCard = ({ project }) => {
           ))}
         </div>
 
-        <div className="mt-auto pt-3 border-top w-100">
+        <div className="mt-auto pt-3 border-top-mode w-100">
           {project.category === 'dev' ? (
             <div className="d-flex gap-3">
               {project.links?.map((link, i) => (
@@ -80,7 +80,7 @@ const ProjectCard = ({ project }) => {
           ) : (
             <div className="d-flex justify-content-between align-items-center flex-wrap gap-2">
               {project.specs?.map((spec, i) => (
-                <div key={i} className="spec-item text-success fw-bold small">
+                <div key={i} className="spec-item text-success-mode fw-bold small">
                   <IoHardwareChipSharp className="me-1" /> {spec}
                 </div>
               ))}
@@ -90,11 +90,17 @@ const ProjectCard = ({ project }) => {
       </div>
       
       <style jsx>{`
-        .card-img-wrapper { position: relative; width: 100%; height: 250px; background-color: #f8f9fa; flex-shrink: 0; overflow: hidden; }
+        .card-img-wrapper { position: relative; width: 100%; height: 250px; background-color: var(--bg-light); flex-shrink: 0; overflow: hidden; }
         .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .carousel-image-item { min-width: 100%; height: 100%; position: relative; flex-shrink: 0; }
-        .project-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; height: 100%; }
+        .project-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s; height: 100%; }
         .project-card:hover { transform: translateY(-5px); }
+        
+        .text-dark-mode { color: var(--text-dark); }
+        .text-muted-mode { color: var(--text-muted); }
+        .border-top-mode { border-top: 1px solid var(--border-color); }
+        .text-success-mode { color: var(--primary-color); }
+
         .title-clamp { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; min-height: 1.5em; }
         .description-clamp { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
         .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 20; transition: background 0.2s; font-size: 0.8rem; }
@@ -107,9 +113,10 @@ const ProjectCard = ({ project }) => {
         .category-badge { position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .category-badge.dev { background: linear-gradient(45deg, #0d6efd, #0dcaf0); }
         .category-badge.tech { background: linear-gradient(45deg, #198754, #20c997); }
-        .tech-pill { font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background-color: #f1f3f5; color: #495057; }
-        .minimal-link { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid #dee2e6; border-radius: 8px; text-decoration: none; color: #333; font-size: 0.8rem; font-weight: 600; background: #fff; transition: all 0.2s; }
-        .minimal-link:hover { border-color: #0d6efd; background-color: #f8f9fa; color: #0d6efd; }
+        .tech-pill { font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background-color: rgba(0,0,0,0.05); color: var(--text-muted); }
+        [data-theme='dark'] .tech-pill { background-color: rgba(255,255,255,0.05); }
+        .minimal-link { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; color: var(--text-dark); font-size: 0.8rem; font-weight: 600; background: var(--card-bg); transition: all 0.2s; }
+        .minimal-link:hover { border-color: var(--primary-color); background-color: rgba(25, 135, 84, 0.05); color: var(--primary-color); }
         .spec-item { background-color: rgba(25, 135, 84, 0.1); padding: 5px 10px; border-radius: 6px; }
       `}</style>
     </div>

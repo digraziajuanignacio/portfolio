@@ -126,36 +126,37 @@ export default function ContactForm({ onSuccess }) {
                 .input-field label { 
                     font-size: 0.85rem; 
                     font-weight: 700; 
-                    color: #444; 
+                    color: var(--text-dark); 
                     margin-left: 4px;
                 }
                 
                 .input-field input, .input-field textarea { 
                     padding: 0.9rem 1.2rem; 
-                    border: 2px solid #f0f0f0; 
+                    border: 2px solid var(--border-color); 
                     border-radius: 16px; 
                     width: 100%; 
                     font-size: 0.95rem;
                     transition: all 0.2s ease;
-                    background: #fcfcfc;
+                    background: var(--bg-light);
+                    color: var(--text-dark);
                 }
                 
                 .input-field input:focus, .input-field textarea:focus { 
                     outline: none;
-                    border-color: #198754;
-                    background: #ffffff;
-                    box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+                    border-color: var(--primary-color);
+                    background: var(--card-bg);
+                    box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.1);
                 }
 
                 .char-count-wrapper { display: flex; justify-content: flex-end; margin-top: 4px; }
-                .char-count { font-size: 0.75rem; color: #aaa; font-weight: 600; }
+                .char-count { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
                 .char-count.warning { color: #dc3545; }
 
                 .btn-premium-submit { 
                     width: 100%; 
                     padding: 1rem; 
-                    background: #1a1a1a; 
-                    color: white; 
+                    background: var(--text-dark); 
+                    color: var(--card-bg); 
                     border: none; 
                     border-radius: 16px; 
                     font-weight: 700; 
@@ -170,7 +171,7 @@ export default function ContactForm({ onSuccess }) {
                 }
                 
                 .btn-premium-submit:hover:not(:disabled) { 
-                    background: #000;
+                    opacity: 0.9;
                     transform: translateY(-2px);
                     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
                 }

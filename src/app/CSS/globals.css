@@ -3,7 +3,21 @@
   --secondary-color: #0d6efd;
   --text-dark: #1a1a1a;
   --text-muted: #666666;
-  --bg-light: #fcfcfc;
+  --bg-light: #f8f9fa;
+  --card-bg: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --header-bg: rgba(255, 255, 255, 0.8);
+}
+
+[data-bs-theme='dark'] {
+  --primary-color: #20c997;
+  --secondary-color: #378efe;
+  --text-dark: #f8f9fa;
+  --text-muted: #adb5bd;
+  --bg-light: #0d0d0d;
+  --card-bg: #1a1a1a;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --header-bg: rgba(13, 13, 13, 0.8);
 }
 
 * {
@@ -12,19 +26,55 @@
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  background-color: var(--bg-light);
+html, body {
+  background-color: var(--bg-light) !important;
+  color: var(--text-dark) !important;
+  min-height: 100vh;
 }
 
 body {
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  color: var(--text-dark);
+  max-width: 100vw;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -2;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(25, 135, 84, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(13, 110, 253, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(25, 135, 84, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(13, 110, 253, 0.08) 0px, transparent 50%);
+  pointer-events: none;
+}
+
+[data-bs-theme='dark'] body::before {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(32, 201, 151, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(55, 142, 254, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(32, 201, 151, 0.12) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(55, 142, 254, 0.12) 0px, transparent 50%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0.04;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3Cfilter id='noiseFilter'%3e%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3e%3C/filter%3e%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3C/svg%3e");
+}
+
+[data-bs-theme='dark'] body::after {
+  opacity: 0.07;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -36,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 code, pre, .mono-text {
-  font-family: var(--font-geist-mono), source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: var(--font-geist-mono), source-code-pro, Menlo, Monaco, Consolas, monospace;
 }
 
 a {
@@ -44,21 +94,13 @@ a {
   text-decoration: none;
 }
 
-/* Tipografía de Vanguardia */
-.display-large {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: -0.05em;
-}
-
 .text-balance {
   text-wrap: balance;
 }
 
-/* Mejoras globales de legibilidad */
 p {
   font-size: 1.05rem;
-  font-weight: 450; /* Peso óptimo para legibilidad en Geist */
+  font-weight: 450;
 }
 
 strong {
@@ -66,6 +108,6 @@ strong {
 }
 
 ::selection {
-  background-color: rgba(25, 135, 84, 0.2);
-  color: var(--primary-color);
+  background-color: rgba(32, 201, 151, 0.3);
+  color: #ffffff;
 }
